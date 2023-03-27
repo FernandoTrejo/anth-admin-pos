@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('costo');
             $table->string('imagen_url');
             $table->foreignId('categoria_id')->constrained('categoria_producto');
-            $table->foreignId('linea_id')->constrained('linea_producto')->nullable();
+            $table->foreignId('linea_id')->nullable()->constrained('linea_producto');
             $table->timestamps();
         });
     }

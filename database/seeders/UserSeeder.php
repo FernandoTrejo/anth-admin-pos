@@ -14,10 +14,10 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create(
+        $administrador = User::create(
             [
-                'name' => 'Usuario #1',
-                'username' => 'usuario1',
+                'name' => 'Ronald Trejo',
+                'username' => 'admin',
                 'password' => Hash::make('clave123')
             ]
 
@@ -27,7 +27,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Usuario #2',
                 'username' => 'usuario2',
-                'password' => Hash::make('clave321')
+                'password' => Hash::make('clave321'),
+                'codigo_empresa' => '032615488848484'
             ]
         );
 
