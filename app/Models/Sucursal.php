@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bodega extends Model
+class Sucursal extends Model
 {
     use HasFactory;
 
-    protected $table = 'bodega';
+    protected $table = 'sucursal';
 
     protected $fillable = [
+        'codigo',
         'nombre',
-        'codigo_tienda',
-        'empresa_id',
-        'sucursal_id'
+        'direccion',
+        'telefono',
+        'correo',
+        'status',
+        'empresa_id' 
     ];
 }

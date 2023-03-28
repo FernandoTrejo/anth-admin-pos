@@ -13,11 +13,16 @@ class Traslado extends Model
     protected $table = 'traslado';
 
     protected $fillable = [
+        'numero_documento',
         'codigo_origen',
-        'codigo_destino'
+        'titulo_origen',
+        'codigo_destino',
+        'titulo_destino',
+        'empresa_id'
     ];
 
-    public function productos() : HasMany{
+    public function productos(): HasMany
+    {
         return $this->hasMany(TrasladoProducto::class, 'traslado_id');
     }
 }

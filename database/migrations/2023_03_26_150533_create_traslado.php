@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('traslado', function (Blueprint $table) {
             $table->id();
+            $table->string('numero_documento');
             $table->string('codigo_origen');
             $table->string('titulo_origen');
             $table->string('codigo_destino');
