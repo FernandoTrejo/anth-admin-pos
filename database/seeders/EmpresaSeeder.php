@@ -22,7 +22,7 @@ class EmpresaSeeder extends Seeder
         //creacion de empresa
         $empresa = Empresa::create(
             [
-                'codigo' => '032615488848484',
+                'codigo' => 'f6e1c9cf-7188-4dfb-962b-e2428266428c',
                 'titulo' => 'Inversiones Anthonys',
                 'descripcion' => '',
                 'actividad_economica' => '',
@@ -49,7 +49,7 @@ class EmpresaSeeder extends Seeder
 
         //creacion de sucursales
         $planta = Sucursal::create([
-            'codigo' => '0000000000',
+            'codigo' => '69ed8ad3-1138-40a9-ba36-89d9c2882359',
             'nombre' => 'PLANTA',
             'direccion' => '',
             'telefono' => '',
@@ -58,7 +58,7 @@ class EmpresaSeeder extends Seeder
             'empresa_id' => $empresa->id
         ]);
         $encuentro = Sucursal::create([
-            'codigo' => '1111111111',
+            'codigo' => '50c1bb68-2e10-49f3-80a6-82fc548a6d17',
             'nombre' => 'SUC. EL ENCUENTRO',
             'direccion' => '',
             'telefono' => '',
@@ -67,7 +67,7 @@ class EmpresaSeeder extends Seeder
             'empresa_id' => $empresa->id
         ]);
         $metrocentro = Sucursal::create([
-            'codigo' => '2222222222',
+            'codigo' => '5eef59fe-d911-4b9d-8984-b0584ea09a10',
             'nombre' => 'SUC. METROCENTRO',
             'direccion' => '',
             'telefono' => '',
@@ -78,12 +78,12 @@ class EmpresaSeeder extends Seeder
         
 
         Caja::create([
-            'codigo' => '2d5f4w5f5ef5r4f5erfds5',
+            'codigo' => '56ccbec0-6bf3-4507-9aad-3a80ed6e651e',
             'titulo' => 'Caja #1',
             'sucursal_id' => $encuentro->id
         ]);
         Caja::create([
-            'codigo' => 'djsf4w5f5ef5r4f5erf1d2',
+            'codigo' => '275fd84d-9a5b-4e01-b1fe-09111295163c',
             'titulo' => 'Caja #2',
             'sucursal_id' => $metrocentro->id
         ]);

@@ -28,4 +28,5 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login-att
 Route::prefix('traslados')->group(function () {
     Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
     Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
+    Route::post('cancelar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
 });

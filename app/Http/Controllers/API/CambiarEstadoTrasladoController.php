@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Traslado;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
+use Src\shared\APIResponse;
 
 class CambiarEstadoTrasladoController extends Controller
 {
@@ -19,24 +20,15 @@ class CambiarEstadoTrasladoController extends Controller
                 'uuid' => ['required']
             ]);
     
-            $traslado = Traslado::where('uuid', $datos['uuid'])->update([
+            Traslado::where('uuid', $datos['uuid'])->update([
                 'status' => $estado
             ]);
-            // $traslado->status = $estado;
-            // $traslado->save();
-            return response()->json(
-                [
-                    'codigo' => 200,
-                    'msg' => 'El estado ha sido modificado correctamente'
-                ]
-            );
+
+            $response = new APIResponse(200, true, 'El estado ha sido modificado correctamente', []);
+            return response()->json($response->toArray());
         } catch (\Throwable $th) {
-            return response()->json(
-                [
-                    'codigo' => $th->getCode(),
-                    'msg' => $th->getMessage()
-                ]
-            );
+            $response = new APIResponse($th->getCode(), false, $th->getMessage(), []);
+            return response()->json($response->toArray());
         }
     }
 
