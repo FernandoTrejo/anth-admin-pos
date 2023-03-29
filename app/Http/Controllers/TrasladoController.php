@@ -9,6 +9,7 @@ use App\Models\Traslado;
 use App\Models\TrasladoProducto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class TrasladoController extends Controller
 {
@@ -23,11 +24,12 @@ class TrasladoController extends Controller
                     'numero_documento' => ['required'],
                     'codigos_productos' => ['required', 'array']
                 ]);
-
+                $uuid = "tr-". Str::uuid();
                 $tiendaOrigen = Sucursal::where('codigo', $datos['codigo_origen'])->first();
                 $tiendaDestino = Sucursal::where('codigo', $datos['codigo_destino'])->first();
 
                 $traslado = Traslado::create([
+                    'uuid' => $uuid,
                     'codigo_origen' => $datos['codigo_origen'],
                     'codigo_destino' => $datos['codigo_destino'],
                     'numero_documento' => $datos['numero_documento'],

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CambiarEstadoTrasladoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,5 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login-att
 // TRASLADOS
 Route::prefix('traslados')->group(function () {
     Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
+    Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
 });

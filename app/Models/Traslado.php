@@ -13,12 +13,14 @@ class Traslado extends Model
     protected $table = 'traslado';
 
     protected $fillable = [
+        'uuid',
         'numero_documento',
         'codigo_origen',
         'titulo_origen',
         'codigo_destino',
         'titulo_destino',
-        'empresa_id'
+        'empresa_id',
+        'status'
     ];
 
     public function productos(): HasMany
