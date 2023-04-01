@@ -15,11 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
-            $table->double('precio');
-            $table->double('costo');
-            $table->string('imagen_url');
-            $table->foreignId('categoria_id')->constrained('categoria_producto');
-            $table->foreignId('linea_id')->nullable()->constrained('linea_producto');
+            $table->string('unidad_medida');
+            $table->integer('stock_minimo')->nullable();
+            $table->integer('stock_maximo')->nullable();
+            $table->string('tipo_costeo');
+            $table->double('existencias');
+            $table->double('costo_promedio');
+            $table->double('peso')->default(0);
+            $table->double('volumen')->default(0);
+            $table->string('cuenta_contable')->nullable();
+            $table->enum('status', ['A', 'B'])->default('A');
+            $table->foreignId('empresa_id')->constrained('empresa');
+            $table->string('linea_codigo');
             $table->timestamps();
         });
     }

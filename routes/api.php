@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CambiarEstadoTrasladoController;
+use App\Http\Controllers\API\ConsultarInventarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,10 @@ Route::prefix('traslados')->group(function () {
     Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
     Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
     Route::post('cancelar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
+});
+
+// INVENTARIO
+Route::prefix('inventario')->group(function () {
+    Route::get('consultar_inventario_activo/{skip}/{take}', [ConsultarInventarioController::class, 'ConsultarInventarioActivo']);
+    Route::get('consultar_inventario_activo/cantidad', [ConsultarInventarioController::class, 'CantidadInventarioActivo']);
 });

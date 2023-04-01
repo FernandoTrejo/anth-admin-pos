@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
+            $table->string('cuenta_contable')->nullable();
+            $table->enum('status', ['A', 'B'])->default('B');
             $table->foreignId('empresa_id')->constrained('empresa');
             $table->timestamps();
         });

@@ -38,14 +38,14 @@ class EmpresaSeeder extends Seeder
         ]);
 
         //creacion de categorias y productos
-        $categorias = CategoriaProducto::factory()->count(4)->create([
-            'empresa_id' => $empresa->id
-        ]);
-        foreach ($categorias as $categoria) {
-            Producto::factory()->count(10)->create([
-                'categoria_id' => $categoria->id
-            ]);
-        }
+        // $categorias = CategoriaProducto::factory()->count(4)->create([
+        //     'empresa_id' => $empresa->id
+        // ]);
+        // foreach ($categorias as $categoria) {
+        //     Producto::factory()->count(10)->create([
+        //         'categoria_id' => $categoria->id
+        //     ]);
+        // }
 
         //creacion de sucursales
         $planta = Sucursal::create([

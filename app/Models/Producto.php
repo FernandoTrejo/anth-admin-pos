@@ -13,11 +13,17 @@ class Producto extends Model
     protected $fillable = [
         'codigo',
         'nombre',
-        'precio',
-        'costo',
-        'imagen_url',
-        'categoria_id',
-        'linea_id'
+        'unidad_medida',
+        'stock_minimo',
+        'stock_maximo',
+        'tipo_costeo',
+        'existencias',
+        'costo_promedio',
+        'peso',
+        'volumen',
+        'cuenta_contable',
+        'status',
+        'empresa_id',
+        'linea_codigo'
     ];
-        
 }
