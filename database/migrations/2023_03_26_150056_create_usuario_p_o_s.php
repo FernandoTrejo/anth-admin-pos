@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nombre_empleado');
             $table->string('tipo_empleado');//cajero, encargado, informatica
             $table->string('url_imagen');
-            $table->foreignId('empresa_id')->constrained('empresa');
+            // $table->foreignId('empresa_id')->constrained('empresa');
             $table->timestamps();
         });
     }

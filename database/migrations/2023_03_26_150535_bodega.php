@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('bodega', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('direccion')->default('');
+            $table->string('encargado')->default('');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->string('codigo_tienda');
-            $table->foreignId('empresa_id')->constrained('empresa');
             $table->foreignId('sucursal_id')->constrained('sucursal')->nullable();
             $table->timestamps();
         });

@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('linea_producto', function (Blueprint $table) {
+        Schema::create('producto_menu', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
+            $table->string('codigo')->unique();
             $table->string('nombre');
-            $table->string('cuenta_contable')->nullable();
-            $table->enum('status', ['activo', 'inactivo'])->default('B');
+            $table->string('imagen');
+            $table->double('precio');
+            $table->enum('status', ['activo', 'inactivo'])->default('inactivo');
+            $table->foreignId('categoria_menu_id')->constrained('categoria_producto_menu');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('linea_producto');
+        Schema::dropIfExists('producto_menu');
     }
 };

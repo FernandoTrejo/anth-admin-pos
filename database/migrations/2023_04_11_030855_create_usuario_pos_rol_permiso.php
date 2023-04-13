@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('linea_producto', function (Blueprint $table) {
+        Schema::create('usuario_pos_rol_permiso', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
-            $table->string('nombre');
-            $table->string('cuenta_contable')->nullable();
-            $table->enum('status', ['activo', 'inactivo'])->default('B');
+            $table->foreignId('rol_id')->constrained('usuario_pos_rol');
+            $table->foreignId('permiso_id')->constrained('usuario_pos_permiso');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('linea_producto');
+        Schema::dropIfExists('usuario_pos_rol_permiso');
     }
 };

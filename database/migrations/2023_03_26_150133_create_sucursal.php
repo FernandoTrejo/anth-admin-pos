@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('correo');
             $table->enum('status', ['activo', 'inactivo'])->default('inactivo');//activo-inactivo
-            $table->foreignId('empresa_id')->constrained('empresa');
+            // $table->foreignId('empresa_id')->constrained('empresa');
             $table->timestamps();
         });
     }

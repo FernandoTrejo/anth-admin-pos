@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('codigo_destino');
             $table->string('titulo_destino');
             $table->enum('status', ['inicial', 'finalizado', 'cancelado'])->default('inicial');
-            $table->foreignId('empresa_id')->constrained('empresa');
             $table->timestamps();
         });
     }

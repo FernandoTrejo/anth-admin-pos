@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->dateTime('fecha_hora');
             $table->longText('json_estado');
-            $table->foreignId('empresa_id')->constrained('empresa');
             $table->timestamps();
         });
     }

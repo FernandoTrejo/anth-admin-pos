@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\API\ConsultarMenuProductosController;
 use App\Http\Controllers\TrasladoController;
 
 /*
@@ -37,3 +38,9 @@ Route::prefix('inventario')->group(function () {
     Route::get('consultar_inventario_activo/{skip}/{take}', [ConsultarInventarioController::class, 'ConsultarInventarioActivo']);
     Route::get('consultar_inventario_activo/cantidad', [ConsultarInventarioController::class, 'CantidadInventarioActivo']);
 });
+
+// Menu
+Route::prefix('menu')->group(function () {
+    Route::get('categorias_productos', [ConsultarMenuProductosController::class, 'Consultar']);
+});
+

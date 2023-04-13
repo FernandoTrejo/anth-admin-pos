@@ -24,8 +24,7 @@ return new class extends Migration
             $table->double('peso')->default(0);
             $table->double('volumen')->default(0);
             $table->string('cuenta_contable')->nullable();
-            $table->enum('status', ['A', 'B'])->default('A');
-            $table->foreignId('empresa_id')->constrained('empresa');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->string('linea_codigo');
             $table->timestamps();
         });
