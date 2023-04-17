@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
-            $table->string('url');
-            $table->string('status');
+            $table->string('url')->default('');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->timestamps();
         });
     }

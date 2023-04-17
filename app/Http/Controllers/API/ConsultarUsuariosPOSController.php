@@ -3,25 +3,22 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\CategoriaMenu;
-use App\Models\Producto;
-use App\Models\ProductoMenu;
+use App\Models\UsuarioPOS;
 use Illuminate\Http\Request;
 use Src\shared\APIResponse;
 
-class ConsultarMenuProductosController extends Controller
+class ConsultarUsuariosPOSController extends Controller
 {
     public function Consultar(){
         try {
-            $categorias = CategoriaMenu::all()->toArray();
-            $productos = Producto::all()->toArray();
+            $usuarios = UsuarioPOS::get()->toArray();
+
             $response =  new APIResponse(
                 200,
                 true,
-                "Categorias y productos del menu",
+                "Usuarios POS",
                 [
-                    'categorias' => $categorias,
-                    'productos' => $productos
+                    'usuarios' => $usuarios
                 ]
             );
 

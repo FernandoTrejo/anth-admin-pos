@@ -21,11 +21,11 @@ class UsuarioPOSFactory extends Factory
         return [
             'codigo' => Str::uuid(),
             'usuario' => fake()->userName(),
-            'clave' => Hash::make('password123'),
+            // 'clave' => Hash::make('password123'),
+            'clave' => 'password123',
             'nombre_empleado' => fake()->name(),
             'tipo_empleado' => 'cajero', //cajero, encargado, informatica
-            'url_imagen' => '',
-            'empresa_id' => 1
+            'url_imagen' => 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
         ];
     }
 }

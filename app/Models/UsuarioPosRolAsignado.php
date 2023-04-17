@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaMenu extends Model
+class UsuarioPosRolAsignado extends Model
 {
     use HasFactory;
 
-    protected $table = 'categoria_producto_menu';
+    protected $table = 'usuario_pos_rol_asignado';
 
     protected $fillable = [
-        'codigo',
-        'nombre',
-        'url',
-        'status'
+        'rol_id',
+        'usuario_pos_id'
     ];
     
 }

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
-            $table->string('cuenta_contable')->nullable();
-            $table->enum('status', ['activo', 'inactivo'])->default('B');
+            $table->string('cuenta_contable')->default('');
+            $table->enum('status', ['activo', 'inactivo'])->default('inactivo');
             $table->timestamps();
         });
     }

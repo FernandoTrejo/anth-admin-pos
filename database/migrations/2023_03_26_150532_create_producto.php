@@ -15,17 +15,22 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
-            $table->string('unidad_medida');
-            $table->integer('stock_minimo')->nullable();
-            $table->integer('stock_maximo')->nullable();
-            $table->string('tipo_costeo');
-            $table->double('existencias');
-            $table->double('costo_promedio');
-            $table->double('peso')->default(0);
-            $table->double('volumen')->default(0);
-            $table->string('cuenta_contable')->nullable();
-            $table->enum('status', ['activo', 'inactivo'])->default('activo');
+            $table->string('codigo_categoria_venta')->default('');
+            $table->string('upc')->default(''); 
             $table->string('linea_codigo');
+            $table->string('unidad_medida');
+            $table->double('precio')->default(0);
+            $table->double('existencias')->default(0);
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
+            $table->string('proveedor')->default('');
+            $table->string('imagen')->default('');
+
+            $table->enum('permitir_venta', ['si', 'no'])->default('si');
+            $table->enum('permitir_traslado', ['si', 'no'])->default('si');
+            $table->enum('permitir_ajuste', ['si', 'no'])->default('si');
+            $table->enum('permitir_cambio_precio_caja', ['si', 'no'])->default('no');
+            $table->enum('permitir_cambio_nombre_caja', ['si', 'no'])->default('no');
+            $table->enum('controlar_existencias', ['si', 'no'])->default('si');
             $table->timestamps();
         });
     }

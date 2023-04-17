@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaMenu extends Model
+class PermisoUsuarioPOS extends Model
 {
     use HasFactory;
 
-    protected $table = 'categoria_producto_menu';
+    protected $table = 'usuario_pos_permiso';
 
     protected $fillable = [
-        'codigo',
-        'nombre',
-        'url',
-        'status'
+        'titulo'
     ];
-    
 }

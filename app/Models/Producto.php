@@ -13,17 +13,20 @@ class Producto extends Model
     protected $fillable = [
         'codigo',
         'nombre',
+        'codigo_categoria_venta',
+        'upc',
+        'linea_codigo',
         'unidad_medida',
-        'stock_minimo',
-        'stock_maximo',
-        'tipo_costeo',
+        'precio',
         'existencias',
-        'costo_promedio',
-        'peso',
-        'volumen',
-        'cuenta_contable',
         'status',
-        'empresa_id',
-        'linea_codigo'
+        'proveedor',
+        'imagen',
+        'permitir_venta',
+        'permitir_traslado',
+        'permitir_ajuste',
+        'permitir_cambio_precio_caja',
+        'permitir_cambio_nombre_caja',
+        'controlar_existencias'
     ];
 }

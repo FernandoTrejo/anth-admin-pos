@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->double('precio');
-            $table->foreignId('producto_menu_id')->constrained('producto_menu');
+            $table->foreignId('producto_id')->constrained('producto');
             $table->timestamps();
         });
     }

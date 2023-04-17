@@ -17,7 +17,10 @@ class UsuarioPOS extends Model
         'clave',
         'nombre_empleado',
         'tipo_empleado', //cajero, encargado, informatica
-        'url_imagen',
-        'empresa_id'
+        'url_imagen'
     ];
+
+    public function roles(){
+        return $this->hasMany(RolUsuarioPOS::class, 'usuario_pos_id');
+    }
 }
