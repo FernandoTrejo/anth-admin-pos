@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Sucursal extends Model
 {
@@ -17,7 +18,11 @@ class Sucursal extends Model
         'direccion',
         'telefono',
         'correo',
-        'status',
-        'empresa_id' 
+        'status'
     ];
+
+
+    public function formasPago() : BelongsToMany{
+        return $this->belongsToMany(FormaPago::class, 'forma_pago_sucursal', 'sucursal_id', 'forma_pago_id');
+    }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('codigo');
             $table->string('nombre');
             $table->string('codigo_categoria_venta')->default('');
+            $table->string('modelo')->default('');
             $table->string('upc')->default(''); 
             $table->string('linea_codigo');
             $table->string('unidad_medida');
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('proveedor')->default('');
             $table->string('imagen')->default('');
 
+            $table->enum('contiene_productos', ['si', 'no'])->default('no');
             $table->enum('permitir_venta', ['si', 'no'])->default('si');
             $table->enum('permitir_traslado', ['si', 'no'])->default('si');
             $table->enum('permitir_ajuste', ['si', 'no'])->default('si');

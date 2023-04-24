@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class UsuarioPOS extends Model
 {
@@ -20,7 +21,7 @@ class UsuarioPOS extends Model
         'url_imagen'
     ];
 
-    public function roles(){
-        return $this->hasMany(RolUsuarioPOS::class, 'usuario_pos_id');
+    public function roles() : BelongsToMany{
+        return $this->belongsToMany(RolUsuarioPOS::class, 'usuario_pos_rol_asignado', 'usuario_pos_id', 'rol_id');
     }
 }

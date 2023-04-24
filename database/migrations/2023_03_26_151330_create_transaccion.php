@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('venta', function (Blueprint $table) {
+        Schema::create('transaccion', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
             $table->string('numero_transaccion');
@@ -23,9 +23,12 @@ return new class extends Migration
             $table->string('corte_diario');
             $table->string('corte_parcial');
             $table->string('tipo_documento_clave');
-            $table->string('forma_pago');
+            $table->string('forma_pago')->default('');
+            $table->string('descripcion')->default('');
+            $table->string('referencia')->default('');
             $table->string('codigo_caja');
             $table->string('codigo_usuario');
+            $table->string('tipo_transaccion');
             $table->foreignId('caja_id')->constrained('caja');
             $table->timestamps();
         });
@@ -36,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('venta');
+        Schema::dropIfExists('transaccion');
     }
 };

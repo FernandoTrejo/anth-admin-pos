@@ -14,6 +14,7 @@ class Producto extends Model
         'codigo',
         'nombre',
         'codigo_categoria_venta',
+        'modelo',
         'upc',
         'linea_codigo',
         'unidad_medida',

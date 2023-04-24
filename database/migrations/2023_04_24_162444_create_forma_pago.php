@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('corte', function (Blueprint $table) {
+        Schema::create('forma_pago', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
-            $table->string('tipo_corte'); // mensual, diario, parcial
-            $table->dateTime('fecha_hora_corte');
-            $table->dateTime('fecha_fin_corte')->nullable();
-            $table->string('codigo_usuario');
+            $table->string('titulo');
+            $table->string('categoria');
+            $table->string('status');//activo/inactivo
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('corte');
+        Schema::dropIfExists('forma_pago');
     }
 };

@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('corte_montos_asignados', function (Blueprint $table) {
             $table->id();
             $table->string('codigo_tipo_pago');
+            $table->string('tipo_corte');
             $table->string('tipo_pago');
             $table->double('monto');
             $table->dateTime('fecha');
             $table->double('total_calculado');
+            $table->double('monto_anterior');
             $table->foreignId('corte_id')->constrained('corte');
             $table->timestamps();
         });
