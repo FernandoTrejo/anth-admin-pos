@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
                 EmpresaSeeder::class,
                 UserSeeder::class,
                 SucursalSeeder::class,
-                VendedorSeeder::class
+                VendedorSeeder::class,
+                UsuarioPOSRolSeeder::class
             ]
         );
     }

@@ -97,7 +97,7 @@ class SucursalSeeder extends Seeder
         ]);
         $goeat = FormaPago::create([
             'codigo' => 'F002',
-            'titulo' => 'Goeat Payment',
+            'titulo' => 'Delivery',
             'categoria' => 'otro',
             'status' => 'activo'
         ]);

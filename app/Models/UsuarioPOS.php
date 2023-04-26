@@ -18,7 +18,8 @@ class UsuarioPOS extends Model
         'clave',
         'nombre_empleado',
         'tipo_empleado', //cajero, encargado, informatica
-        'url_imagen'
+        'url_imagen',
+        'status'
     ];
 
     public function roles() : BelongsToMany{

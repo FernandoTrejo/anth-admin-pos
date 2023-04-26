@@ -25,7 +25,8 @@ class UsuarioPOSFactory extends Factory
             'clave' => 'password123',
             'nombre_empleado' => fake()->name(),
             'tipo_empleado' => 'cajero', //cajero, encargado, informatica
-            'url_imagen' => 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
+            'url_imagen' => 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png',
+            'status' => 'activo'
         ];
     }
 }
