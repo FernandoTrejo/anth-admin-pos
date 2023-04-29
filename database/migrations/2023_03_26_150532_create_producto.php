@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('linea_codigo');
             $table->string('unidad_medida');
             $table->double('precio')->default(0);
+            $table->double('costo_promedio')->default(0);
             $table->double('existencias')->default(0);
             $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->string('proveedor')->default('');
