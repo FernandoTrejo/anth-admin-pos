@@ -90,13 +90,13 @@ class SucursalSeeder extends Seeder
             'status' => 'activo'
         ]);
         $anticipo = FormaPago::create([
-            'codigo' => 'F001',
+            'codigo' => 'anticipo',
             'titulo' => 'Anticipo Liquidado',
             'categoria' => 'otro',
             'status' => 'activo'
         ]);
         $goeat = FormaPago::create([
-            'codigo' => 'F002',
+            'codigo' => 'F001',
             'titulo' => 'Delivery',
             'categoria' => 'otro',
             'status' => 'activo'
