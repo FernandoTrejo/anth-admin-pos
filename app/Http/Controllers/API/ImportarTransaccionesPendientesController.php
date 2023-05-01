@@ -6,11 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Caja;
 use App\Models\Sucursal;
 use App\Models\Transaccion;
+use App\Models\TransaccionPago;
+use App\Models\TransaccionProducto;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Src\shared\APIResponse;
 use Src\shared\DTOs\TransaccionDTO;
+use Src\shared\Parsers\PagoParser;
 use Src\shared\Parsers\TransaccionParser;
+use Src\shared\Parsers\TransaccionProductoParser;
 
 class ImportarTransaccionesPendientesController extends Controller
 {
@@ -37,11 +42,12 @@ class ImportarTransaccionesPendientesController extends Controller
                 $transaccionDatos['caja_id'] = $caja->id;
                 $transaccionDatos['codigo_caja'] = $caja->codigo;
                 $transaccionDatos['codigo_sucursal'] = $sucursal->codigo;
-                $transaccionDatos['codigo_usuario'] = '';
                 $transaccionDTO = $parser->parse($transaccionDatos);
                 
                 if(!$this->existeCodigoTransaccion($transaccionDTO->codigo)){
-                    Transaccion::create($transaccionDTO->toArray());
+                    if(!$this->InsertarInfoTransaccion($transaccionDTO)){
+                        continue;
+                    }
                 }
 
                 $codigosRegistrados[] = $transaccionDTO->codigo;
@@ -73,6 +79,31 @@ class ImportarTransaccionesPendientesController extends Controller
             return false;
         }
         return true;
+    }
+
+    private function InsertarInfoTransaccion($transaccionDTO) : bool{
+        try {
+            DB::transaction(function () use ($transaccionDTO){
+                $originalArr = $transaccionDTO->toArray();
+                $copy = $transaccionDTO->toArray();
+                unset($copy['pagos']);
+                unset($copy['productos_orden']);
+                Transaccion::create($copy);
+
+                $pagosArr = $originalArr['pagos'];
+                $productosOrdenArr = $originalArr['productos_orden'];
+
+                $pagosInsert = PagoParser::parseManyToArray($pagosArr);
+                TransaccionPago::insert($pagosInsert);
+
+                $productosInsert = TransaccionProductoParser::parseManyToArray($productosOrdenArr);
+                TransaccionProducto::insert($productosInsert);
+            });
+            return true;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            return false;
+        }
     }
 
 }

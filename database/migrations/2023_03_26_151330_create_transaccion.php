@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('transaccion', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
-            $table->string('numero_transaccion');
+            $table->string('numero_transaccion')->default('');
             $table->dateTime('fecha');
-            $table->string('nombre_cliente');
+            $table->string('nombre_cliente')->default('');
             $table->double('total');
             $table->string('status');
-            $table->string('corte_mensual');
-            $table->string('corte_diario');
-            $table->string('corte_parcial');
-            $table->string('tipo_documento_clave');
+            $table->string('corte_mensual')->default('');
+            $table->string('corte_diario')->default('');
+            $table->string('corte_parcial')->default('');
+            $table->string('tipo_documento_clave')->default('');
             $table->string('forma_pago')->default('');
             $table->string('descripcion')->default('');
             $table->string('referencia')->default('');

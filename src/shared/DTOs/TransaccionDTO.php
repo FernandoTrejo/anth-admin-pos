@@ -25,6 +25,9 @@ class TransaccionDTO
     public $descuento_total;
     public $caja_id;
 
+    public $pagos;
+    public $productos_orden;
+
 
     public function toArray()
     {
@@ -32,23 +35,25 @@ class TransaccionDTO
             'codigo' => $this->codigo,
             'numero_transaccion' => $this->numero_transaccion,
             'fecha' => $this->fecha,
-            'nombre_cliente' => $this->nombre_cliente,
+            'nombre_cliente' => ($this->nombre_cliente) ? $this->nombre_cliente : '',
             'total' => $this->total,
             'status' => $this->status,
             'corte_mensual' => $this->corte_mensual,
             'corte_diario' => $this->corte_diario,
             'corte_parcial' => $this->corte_parcial,
             'tipo_documento_clave' => $this->tipo_documento_clave,
-            'forma_pago' => $this->forma_pago,
-            'descripcion' => $this->descripcion,
-            'referencia' => $this->referencia,
-            'codigo_vendedor' => $this->codigo_vendedor,
+            'forma_pago' => $this->forma_pago ? $this->forma_pago : '',
+            'descripcion' => $this->descripcion ? $this->descripcion : '',
+            'referencia' => $this->referencia ? $this->referencia : '',
+            'codigo_vendedor' => $this->codigo_vendedor ? $this->codigo_vendedor : '',
             'codigo_caja' => $this->codigo_caja,
             'codigo_sucursal' => $this->codigo_sucursal,
             'codigo_usuario' => $this->codigo_usuario,
             'tipo_transaccion' => $this->tipo_transaccion,
-            'descuento_total' => $this->descuento_total,
-            'caja_id' => $this->caja_id
+            'descuento_total' => $this->descuento_total ? $this->descuento_total : 0,
+            'caja_id' => $this->caja_id,
+            'pagos' => $this->pagos ? $this->pagos : [],
+            'productos_orden' => $this->productos_orden ? $this->productos_orden : []
         ];
     }
 }
