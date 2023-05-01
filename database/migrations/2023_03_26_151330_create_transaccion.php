@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('descripcion')->default('');
             $table->string('referencia')->default('');
             $table->string('codigo_vendedor')->default('');
+            $table->double('descuento_total')->default(0);
             $table->string('codigo_caja');
             $table->string('codigo_sucursal');
             $table->string('codigo_usuario');

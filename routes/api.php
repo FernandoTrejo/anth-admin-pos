@@ -11,6 +11,7 @@ use App\Http\Controllers\API\ConsultarMenuProductosController;
 use App\Http\Controllers\API\ConsultarSucursalesInfoController;
 use App\Http\Controllers\API\ConsultarUsuariosPOSController;
 use App\Http\Controllers\API\ConsultarVendedoresController;
+use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
 use App\Http\Controllers\TrasladoController;
 
 /*
@@ -68,4 +69,13 @@ Route::prefix('cajas')->group(function () {
 Route::prefix('vendedores')->group(function () {
     Route::get('consultar_todos', [ConsultarVendedoresController::class, 'ConsultarTodos']);
 });
+
+
+
+
+Route::prefix('sync_server')->group(function () {
+    Route::post('sync_transacciones_pendientes', [ImportarTransaccionesPendientesController::class, 'Importar']);
+});
+
+
 
