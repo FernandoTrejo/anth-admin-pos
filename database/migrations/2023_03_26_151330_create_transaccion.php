@@ -26,7 +26,9 @@ return new class extends Migration
             $table->string('forma_pago')->default('');
             $table->string('descripcion')->default('');
             $table->string('referencia')->default('');
+            $table->string('codigo_vendedor')->default('');
             $table->string('codigo_caja');
+            $table->string('codigo_sucursal');
             $table->string('codigo_usuario');
             $table->string('tipo_transaccion');
             $table->foreignId('caja_id')->constrained('caja');
