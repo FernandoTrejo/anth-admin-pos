@@ -13,6 +13,8 @@ use App\Http\Controllers\API\ConsultarUsuariosPOSController;
 use App\Http\Controllers\API\ConsultarVendedoresController;
 use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
 use App\Http\Controllers\TrasladoController;
+use Illuminate\Auth\GenericUser;
+use Illuminate\Support\Facades\Broadcast;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,16 @@ Route::prefix('vendedores')->group(function () {
 
 Route::prefix('sync_server')->group(function () {
     Route::post('sync_transacciones_pendientes', [ImportarTransaccionesPendientesController::class, 'Importar']);
+});
+
+Route::post('public_presence/auth', function(){
+    $user = new GenericUser(['id' => microtime()]);
+
+    request()->setUserResolver(function () use ($user) {
+        return $user;
+    });
+
+    return Broadcast::auth(request());
 });
 
 

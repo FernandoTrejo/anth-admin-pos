@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\InventarioModificado;
 use App\Http\Controllers\Controller;
 use App\Models\Caja;
 use App\Models\Sucursal;
@@ -98,6 +99,14 @@ class ImportarTransaccionesPendientesController extends Controller
 
                 $productosInsert = TransaccionProductoParser::parseManyToArray($productosOrdenArr);
                 TransaccionProducto::insert($productosInsert);
+
+                if(count($productosInsert) > 0){
+                    // InventarioModificado::dispatch(
+                    //     $originalArr['codigo_sucursal'],
+                    //     $originalArr['codigo_caja'],
+                    //     $productosInsert,
+                    // );
+                }   
             });
             return true;
         } catch (\Throwable $th) {

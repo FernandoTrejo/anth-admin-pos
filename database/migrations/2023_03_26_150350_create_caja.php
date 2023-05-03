@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('titulo');
+            $table->enum('tipo', ['caja_principal', 'caja_secundaria', 'caja_movil'])->default('caja_principal');
             $table->foreignId('sucursal_id')->constrained('sucursal');
             $table->timestamps();
         });

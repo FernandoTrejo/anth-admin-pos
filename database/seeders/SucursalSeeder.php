@@ -53,10 +53,23 @@ class SucursalSeeder extends Seeder
         ]);
         $cajaMetro = Caja::create([
             'codigo' => '275fd84d-9a5b-4e01-b1fe-09111295163c',
-            'titulo' => 'Caja #2',
+            'titulo' => 'Caja #1 Metrocentro',
+            'tipo' => 'caja_principal',
             'sucursal_id' => $metrocentro->id
         ]);
-        $cajas = [$cajaEncuentro, $cajaMetro];
+        $cajaMetroSecundaria = Caja::create([
+            'codigo' => 'e1a00142-3b7d-420e-993f-28c1c88e627a',
+            'titulo' => 'Caja #2 Metrocentro',
+            'tipo' => 'caja_secundaria',
+            'sucursal_id' => $metrocentro->id
+        ]);
+        $cajaMetroMovil = Caja::create([
+            'codigo' => '82338748-3a2c-4b9a-a4f3-a75079260465c',
+            'titulo' => 'Caja Movil #1 Metrocentro',
+            'tipo' => 'caja_movil',
+            'sucursal_id' => $metrocentro->id
+        ]);
+        $cajas = [$cajaEncuentro, $cajaMetro, $cajaMetroSecundaria, $cajaMetroMovil];
 
         //creacion de bodegas
         Bodega::create([

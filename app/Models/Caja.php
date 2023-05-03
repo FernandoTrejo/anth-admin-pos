@@ -15,6 +15,7 @@ class Caja extends Model
     protected $fillable = [
         'codigo',
         'titulo',
+        'tipo',
         'sucursal_id' 
     ];
 
