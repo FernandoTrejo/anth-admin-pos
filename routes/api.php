@@ -11,6 +11,7 @@ use App\Http\Controllers\API\ConsultarMenuProductosController;
 use App\Http\Controllers\API\ConsultarSucursalesInfoController;
 use App\Http\Controllers\API\ConsultarUsuariosPOSController;
 use App\Http\Controllers\API\ConsultarVendedoresController;
+use App\Http\Controllers\API\ImportarKardexPendienteController;
 use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
 use App\Http\Controllers\TrasladoController;
 use Illuminate\Auth\GenericUser;
@@ -77,7 +78,15 @@ Route::prefix('vendedores')->group(function () {
 
 Route::prefix('sync_server')->group(function () {
     Route::post('sync_transacciones_pendientes', [ImportarTransaccionesPendientesController::class, 'Importar']);
+    Route::post('sync_kardex_pendientes', [ImportarKardexPendienteController::class, 'Importar']);
 });
+
+
+
+
+
+
+
 
 Route::post('public_presence/auth', function(){
     $user = new GenericUser(['id' => microtime()]);

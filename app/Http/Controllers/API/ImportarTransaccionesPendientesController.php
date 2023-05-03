@@ -49,6 +49,10 @@ class ImportarTransaccionesPendientesController extends Controller
                     if(!$this->InsertarInfoTransaccion($transaccionDTO)){
                         continue;
                     }
+                }else{
+                    if(!$this->ActualizarInfoTransaccion($transaccionDTO)){
+                        continue;
+                    }
                 }
 
                 $codigosRegistrados[] = $transaccionDTO->codigo;
@@ -115,4 +119,19 @@ class ImportarTransaccionesPendientesController extends Controller
         }
     }
 
+    private function ActualizarInfoTransaccion($transaccionDTO) : bool{//unicamente datos de la transaccion, se excluyen pagos y productos contenidos en dicha orden
+        try {
+            DB::transaction(function () use ($transaccionDTO){
+                $originalArr = $transaccionDTO->toArray();
+                $copy = $transaccionDTO->toArray();
+                unset($copy['pagos']);
+                unset($copy['productos_orden']);
+                Transaccion::where('codigo', $transaccionDTO->codigo)->update($copy);
+            });
+            return true;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            return false;
+        }
+    }
 }

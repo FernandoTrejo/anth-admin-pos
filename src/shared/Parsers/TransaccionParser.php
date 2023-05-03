@@ -3,6 +3,7 @@
 namespace Src\shared\Parsers;
 
 use DateTime;
+use DateTimeInterface;
 use Src\shared\DTOs\TransaccionDTO;
 use Src\shared\PropertyFinder as Prop;
 
@@ -11,7 +12,12 @@ class TransaccionParser{
         $transaccion = new TransaccionDTO();
         $transaccion->codigo = Prop::find('codigo', $arr, '');
         $transaccion->numero_transaccion = Prop::find('numero_transaccion', $arr, '');
-        $transaccion->fecha = new DateTime(Prop::find('fecha', $arr, ''));
+
+        $timestamp = Prop::find('fechaISO', $arr, 0);
+        $date = new DateTime();
+        $date->setTimestamp($timestamp / 1000);
+        $transaccion->fecha = $date;
+
         $transaccion->nombre_cliente = Prop::find('nombre_cliente', $arr, '');
         $transaccion->total = Prop::find('total', $arr, 0);
         $transaccion->status = Prop::find('status', $arr, '');

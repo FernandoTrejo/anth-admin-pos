@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('status');//active/inactive
             $table->string('codigo_orden');
             $table->string('centro_costo');
+            $table->string('tipo_transaccion');
+            $table->string('proveedor_cliente');
             $table->string('clave_sucursal');
             $table->string('clave_caja');
             $table->timestamps();
