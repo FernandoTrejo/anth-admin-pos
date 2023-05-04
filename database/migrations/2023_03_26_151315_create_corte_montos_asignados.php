@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('tipo_corte');
             $table->string('tipo_pago');
             $table->double('monto');
-            $table->dateTime('fecha');
-            $table->double('total_calculado');
-            $table->double('monto_anterior');
             $table->foreignId('corte_id')->constrained('corte');
             $table->timestamps();
         });

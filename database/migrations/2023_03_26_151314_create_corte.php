@@ -18,6 +18,8 @@ return new class extends Migration
             $table->dateTime('fecha_hora_corte');
             $table->dateTime('fecha_fin_corte')->nullable();
             $table->string('codigo_usuario');
+            $table->string('codigo_sucursal');
+            $table->string('codigo_caja');
             $table->timestamps();
         });
     }
