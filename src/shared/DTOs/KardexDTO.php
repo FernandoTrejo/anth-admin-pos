@@ -39,7 +39,7 @@ class KardexDTO
             'status' => $this->status,
             'tipo_transaccion' => $this->tipo_transaccion,
             'proveedor_cliente' => ($this->proveedor_cliente) ? $this->proveedor_cliente : '',
-            'codigo_orden' => $this->codigo_orden,
+            'codigo_orden' => ($this->codigo_orden) ? $this->codigo_orden : '',
             'centro_costo' => $this->centro_costo,
             'clave_sucursal' => $this->clave_sucursal,
             'clave_caja' => $this->clave_caja,

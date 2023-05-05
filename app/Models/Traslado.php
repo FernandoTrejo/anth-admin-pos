@@ -16,11 +16,13 @@ class Traslado extends Model
         'uuid',
         'numero_documento',
         'codigo_origen',
-        'titulo_origen',
         'codigo_destino',
-        'titulo_destino',
-        'empresa_id',
-        'status'
+        'centro_costo_origen',
+        'centro_costo_destino',
+        'status',
+        'fecha_envio',
+        'fecha_recepcion_sucursal',
+        'fecha_declinacion_sucursal'
     ];
 
     public function productos(): HasMany

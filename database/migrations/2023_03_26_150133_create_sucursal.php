@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('correo');
+            $table->string('clave_centro_costo')->default('');
             $table->enum('status', ['activo', 'inactivo'])->default('inactivo');//activo-inactivo
             // $table->foreignId('empresa_id')->constrained('empresa');
             $table->timestamps();

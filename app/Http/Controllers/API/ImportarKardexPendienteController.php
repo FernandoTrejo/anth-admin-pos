@@ -37,8 +37,9 @@ class ImportarKardexPendienteController extends Controller
             foreach($kardexSet as $kardexDatos){
                 
                 $kardexDatos['centro_costo'] = $centroCosto;
-                $kardexDatos['codigo_caja'] = $caja->codigo;
-                $kardexDatos['codigo_sucursal'] = $sucursal->codigo;
+                
+                $kardexDatos['clave_caja'] = $caja->codigo;
+                $kardexDatos['clave_sucursal'] = $sucursal->codigo;
                 $kardexDTO = $parser->parse($kardexDatos);
                 
                 if(!$this->existeCodigoKardex($kardexDTO->codigo)){

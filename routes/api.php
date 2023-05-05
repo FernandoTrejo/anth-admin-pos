@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\ConsultarMenuProductosController;
 use App\Http\Controllers\API\ConsultarSucursalesInfoController;
+use App\Http\Controllers\API\ConsultarTrasladosController;
 use App\Http\Controllers\API\ConsultarUsuariosPOSController;
 use App\Http\Controllers\API\ConsultarVendedoresController;
 use App\Http\Controllers\API\ImportarCortesPendientesController;
 use App\Http\Controllers\API\ImportarKardexPendienteController;
 use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
+use App\Http\Controllers\API\ImportarTrasladosController;
 use App\Http\Controllers\TrasladoController;
 use Illuminate\Auth\GenericUser;
 use Illuminate\Support\Facades\Broadcast;
@@ -37,9 +39,11 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login-att
 
 // TRASLADOS
 Route::prefix('traslados')->group(function () {
-    Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
+    // Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
     Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
     Route::post('cancelar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
+    Route::get('consultar_todos', [ConsultarTrasladosController::class, 'ConsultarTodos']);
+    Route::get('consultar_enviados_hacia/{{claveCentroCosto}}/{{estado}}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
 });
 
 // INVENTARIO
@@ -81,6 +85,7 @@ Route::prefix('sync_server')->group(function () {
     Route::post('sync_transacciones_pendientes', [ImportarTransaccionesPendientesController::class, 'Importar']);
     Route::post('sync_kardex_pendientes', [ImportarKardexPendienteController::class, 'Importar']);
     Route::post('sync_cortes_pendientes', [ImportarCortesPendientesController::class, 'Importar']);
+    Route::post('sync_traslados_pendientes', [ImportarTrasladosController::class, 'Importar']);
 });
 
 

@@ -18,7 +18,8 @@ class Sucursal extends Model
         'direccion',
         'telefono',
         'correo',
-        'status'
+        'status',
+        'clave_centro_costo'
     ];
 
 

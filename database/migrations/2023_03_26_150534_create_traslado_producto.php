@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('traslado_producto', function (Blueprint $table) {
             $table->id();
             $table->string('codigo_producto');
-            $table->string('nombre_producto');
-            $table->string('imagen_url')->default("");
             $table->integer('cantidad');
             $table->double('costo');
-            $table->double('precio');
+            $table->string('linea')->default('');
             $table->foreignId('traslado_id')->constrained('traslado');
             $table->timestamps();
         });

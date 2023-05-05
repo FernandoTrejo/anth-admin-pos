@@ -14,26 +14,16 @@ class TrasladoProducto extends Model
 
     protected $fillable = [
         'codigo_producto',
-        'nombre_producto',
-        'imagen_url',
         'cantidad',
         'costo',
-        'precio',
-        'traslado_id'
+        'linea',
+        'traslado_id',
     ];
+
 
     public function traslado(): BelongsTo
     {
         return $this->belongsTo(Traslado::class);
     }
 
-
-    /*
-        "codigo_producto": "",
-        "nombre_producto": "",
-        "imagen_url": "",
-        "cantidad": 0,
-        "costo": 0,
-        "precio": 0
-    */
 }

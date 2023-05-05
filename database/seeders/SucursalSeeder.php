@@ -26,7 +26,8 @@ class SucursalSeeder extends Seeder
             'direccion' => '',
             'telefono' => '',
             'correo' => '',
-            'status' => 'activo'
+            'status' => 'activo',
+            'clave_centro_costo' => '0000'
         ]);
         $encuentro = Sucursal::create([
             'codigo' => '50c1bb68-2e10-49f3-80a6-82fc548a6d17',
@@ -34,7 +35,8 @@ class SucursalSeeder extends Seeder
             'direccion' => '',
             'telefono' => '',
             'correo' => '',
-            'status' => 'activo'
+            'status' => 'activo',
+            'clave_centro_costo' => '16'
         ]);
         $metrocentro = Sucursal::create([
             'codigo' => '5eef59fe-d911-4b9d-8984-b0584ea09a10',
@@ -42,7 +44,8 @@ class SucursalSeeder extends Seeder
             'direccion' => '',
             'telefono' => '',
             'correo' => '',
-            'status' => 'activo'
+            'status' => 'activo',
+            'clave_centro_costo' => '7'
         ]);
 
 
@@ -109,18 +112,24 @@ class SucursalSeeder extends Seeder
             'status' => 'activo'
         ]);
         $goeat = FormaPago::create([
-            'codigo' => 'F001',
+            'codigo' => 'delivery',
             'titulo' => 'Delivery',
+            'categoria' => 'otro',
+            'status' => 'activo'
+        ]);
+        $valeDescuento = FormaPago::create([
+            'codigo' => 'vale_descuento',
+            'titulo' => 'Vale Descuento',
             'categoria' => 'otro',
             'status' => 'activo'
         ]);
 
         //enlazar formas de pago
         $metrocentro->formasPago()->sync([
-            $efectivo->id, $tarjeta->id, $anticipo->id
+            $efectivo->id, $tarjeta->id, $anticipo->id, $valeDescuento->id
         ]);
         $encuentro->formasPago()->sync([
-            $efectivo->id, $tarjeta->id, $anticipo->id, $goeat->id
+            $efectivo->id, $tarjeta->id, $anticipo->id, $goeat->id, $valeDescuento->id
         ]);
 
 
