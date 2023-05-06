@@ -16,6 +16,10 @@ class TrasladoDTO
     public $fecha_envio;
     public $fecha_recepcion_sucursal;
     public $fecha_declinacion_sucursal;
+    public $referencia;
+    public $observaciones_envio;
+    public $observaciones_recepcion;
+    public $codigo_usuario_envia;
 
     public $productos;
 
@@ -32,6 +36,10 @@ class TrasladoDTO
             'fecha_envio' => $this->fecha_envio ? $this->fecha_envio : new DateTime(),
             'fecha_recepcion_sucursal' => $this->fecha_recepcion_sucursal ? $this->fecha_recepcion_sucursal : null,
             'fecha_declinacion_sucursal' => $this->fecha_declinacion_sucursal ? $this->fecha_declinacion_sucursal : null,
+            'referencia' => $this->referencia ? $this->referencia : '',
+            'observaciones_envio' => $this->observaciones_envio ? $this->observaciones_envio : '',
+            'observaciones_recepcion' => $this->observaciones_recepcion ? $this->observaciones_recepcion : '',
+            'codigo_usuario_envia' => $this->codigo_usuario_envia ? $this->codigo_usuario_envia : '',
 
             'productos' => $this->productos ? $this->productos : []
         ];

@@ -22,6 +22,12 @@ return new class extends Migration
             $table->string('codigo_destino');
             $table->string('centro_costo_origen');
             $table->string('centro_costo_destino');
+            $table->string('referencia')->default('');
+            $table->string('observaciones_envio')->default('');
+            $table->string('observaciones_recepcion')->default('');
+            $table->string('codigo_usuario_envia');
+            $table->string('codigo_usuario_recibe')->default('');
+            $table->string('codigo_usuario_rechaza')->default('');
             $table->enum('status', ['inicial', 'finalizado', 'cancelado'])->default('inicial');
             $table->timestamps();
         });

@@ -22,7 +22,9 @@ class Traslado extends Model
         'status',
         'fecha_envio',
         'fecha_recepcion_sucursal',
-        'fecha_declinacion_sucursal'
+        'fecha_declinacion_sucursal',
+        'referencia',
+        'codigo_usuario_envia'
     ];
 
     public function productos(): HasMany

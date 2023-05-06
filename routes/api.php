@@ -41,9 +41,12 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login-att
 Route::prefix('traslados')->group(function () {
     // Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
     Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
-    Route::post('cancelar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
+    Route::post('rechazar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
     Route::get('consultar_todos', [ConsultarTrasladosController::class, 'ConsultarTodos']);
-    Route::get('consultar_enviados_hacia/{{claveCentroCosto}}/{{estado}}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
+    Route::get('consultar_enviados_hacia/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
+    Route::get('consultar_enviados_desde/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
+    Route::get('consultar_ultimos_enviados_hacia/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosHaciaMiSucursal']);
+    Route::get('consultar_ultimos_modificados/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosModificados']);
 });
 
 // INVENTARIO
