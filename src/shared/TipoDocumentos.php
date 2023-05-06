@@ -2,7 +2,8 @@
 
 namespace Src\shared;
 
-class TipoDocumentos {
+class TipoDocumentos
+{
     public static $TicketVenta = 'ticket_venta';
     public static $FacturaConsumidorFinal = 'factura_consumidor_final';
     public static $CreditoFiscal = 'credito_fiscal';
@@ -10,8 +11,10 @@ class TipoDocumentos {
     public static $TicketOtrosIngresos = 'ticket_otros_egresos';
     public static $TicketOtrosEgresos = 'ticket_otros_ingresos';
     public static $TicketAnticipos = 'ticket_anticipos';
+    public static $Traslados = 'traslados_a_sucursales';
 
-    public function TraducirTipoDocumento($codigo) {
+    public function TraducirTipoDocumento($codigo)
+    {
         $texto = '';
         switch ($codigo) {
             case self::$CreditoFiscal:
@@ -35,10 +38,12 @@ class TipoDocumentos {
             case self::$TicketAnticipos:
                 $texto = 'Ticket Anticipos';
                 break;
+            case self::$Traslados:
+                $texto = 'Traslados A Sucursales';
+                break;
             default:
                 $texto = '';
         }
         return $texto;
     }
 }
-

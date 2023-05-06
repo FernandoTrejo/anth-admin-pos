@@ -139,9 +139,9 @@ class SucursalSeeder extends Seeder
                 'tipo_documento' => TipoDocumentos::$FacturaConsumidorFinal,
                 'nombre' => 'Factura Consumidor Final',
                 'prefijo' => 'F0-',
-                'numeracion' => '0000',
+                'numeracion' => '0000000000000',
                 'inicio' => 1,
-                'fin' => 100,
+                'fin' => 1000000000,
                 'actual' => 0,
                 'caja_id' => $caja->id
             ]);
@@ -149,9 +149,9 @@ class SucursalSeeder extends Seeder
                 'tipo_documento' => TipoDocumentos::$CreditoFiscal,
                 'nombre' => 'Credito Fiscal',
                 'prefijo' => '',
-                'numeracion' => '0000',
+                'numeracion' => '0000000000000',
                 'inicio' => 1,
-                'fin' => 100,
+                'fin' => 1000000000,
                 'actual' => 0,
                 'caja_id' => $caja->id
             ]);
@@ -159,9 +159,9 @@ class SucursalSeeder extends Seeder
                 'tipo_documento'=> TipoDocumentos::$TicketVenta,
                 'nombre'=> 'Ticket de Venta',
                 'prefijo'=> '',
-                'numeracion'=> '0000',
+                'numeracion'=> '0000000000000',
                 'inicio'=> 1,
-                'fin'=> 100,
+                'fin'=> 1000000000,
                 'actual'=> 0,
                 'caja_id' => $caja->id
             ]);
@@ -169,9 +169,9 @@ class SucursalSeeder extends Seeder
                 'tipo_documento'=> TipoDocumentos::$TicketDevolucion,
                 'nombre'=> 'Ticket Devolucion',
                 'prefijo'=> 'D-',
-                'numeracion'=> '0000',
+                'numeracion'=> '0000000000000',
                 'inicio'=> 1,
-                'fin'=> 100,
+                'fin'=> 1000000000,
                 'actual'=> 0,
                 'caja_id' => $caja->id
             ]);
@@ -179,9 +179,9 @@ class SucursalSeeder extends Seeder
                 'tipo_documento'=> TipoDocumentos::$TicketOtrosEgresos,
                 'nombre'=> 'Ticket Otros Egresos',
                 'prefijo'=> 'E-',
-                'numeracion'=> '0000',
+                'numeracion'=> '0000000000000',
                 'inicio'=> 1,
-                'fin'=> 100,
+                'fin'=> 1000000000,
                 'actual'=> 0,
                 'caja_id' => $caja->id
             ]);
@@ -189,9 +189,9 @@ class SucursalSeeder extends Seeder
                 'tipo_documento'=> TipoDocumentos::$TicketOtrosIngresos,
                 'nombre'=> 'Ticket Otros Ingresos',
                 'prefijo'=> 'I-',
-                'numeracion'=> '0000',
+                'numeracion'=> '0000000000000',
                 'inicio'=> 1,
-                'fin'=> 100,
+                'fin'=> 1000000000,
                 'actual'=> 0,
                 'caja_id' => $caja->id
             ]);
@@ -199,9 +199,19 @@ class SucursalSeeder extends Seeder
                 'tipo_documento'=> TipoDocumentos::$TicketAnticipos,
                 'nombre'=> 'Ticket Anticipos',
                 'prefijo'=> 'A-',
-                'numeracion'=> '0000',
+                'numeracion'=> '0000000000000',
                 'inicio'=> 1,
-                'fin'=> 100,
+                'fin'=> 1000000000,
+                'actual'=> 0,
+                'caja_id' => $caja->id
+            ]);
+            $num8 = Numerador::create([
+                'tipo_documento'=> TipoDocumentos::$Traslados,
+                'nombre'=> 'Traslados A Sucursales',
+                'prefijo'=> 'TS',
+                'numeracion'=> '0000000000000',
+                'inicio'=> 1,
+                'fin'=> 1000000000,
                 'actual'=> 0,
                 'caja_id' => $caja->id
             ]);
