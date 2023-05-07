@@ -25,23 +25,16 @@ class CambiarEstadoTrasladoController extends Controller
             $datos = $request->all();
 
             $this->VerificarDisponibilidadTraslado($datos['uuid'], $estado);
+            $esSucursalOrigen = $datos['es_sucursal_origen'];
 
-            $observacionesEnvio = $datos['observaciones_envio'] ? $datos['observaciones_envio'] : '';
-            $observacionesRecepcion = $datos['observaciones_recepcion'] ? $datos['observaciones_recepcion'] : '';
-
-            $cambios = [
-                'status' => $estado,
-                'observaciones_envio' => $observacionesEnvio,
-                'observaciones_recepcion' => $observacionesRecepcion
-            ];
-            switch ($estado) {
-                case $this->cancelado:
-                    $cambios['fecha_declinacion_sucursal'] = new DateTime();
-                    break;
-                case $this->finalizado:
-                    $cambios['fecha_recepcion_sucursal'] = new DateTime();
-                    break;
+            $cambios = $this->DatosSegunAccion($datos, $estado);
+            // $observacionesEnvio = isset($datos['observaciones_envio']) ? $datos['observaciones_envio'] : '';
+            if($esSucursalOrigen === false){
+                $observacionesRecepcion = isset($datos['observaciones_recepcion']) ? $datos['observaciones_recepcion'] : '';
+                $cambios['observaciones_recepcion'] = $observacionesRecepcion;
             }
+            // $cambios['observaciones_envio'] = $observacionesEnvio;
+            
             Traslado::where('uuid', $datos['uuid'])->update($cambios);
 
             $response = new APIResponse(200, true, 'El estado ha sido modificado correctamente', []);
@@ -49,6 +42,24 @@ class CambiarEstadoTrasladoController extends Controller
         } catch (\Throwable $th) {
             $response = new APIResponse($th->getCode(), false, $th->getMessage(), []);
             return response()->json($response->toArray());
+        }
+    }
+
+    private function DatosSegunAccion($datos, $estado)
+    {
+        if ($estado == $this->finalizado) {
+            return [
+                'status' => $estado,
+                'fecha_recepcion_sucursal' => new DateTime(),
+                'codigo_usuario_recibe' => $datos['codigo_usuario_recibe']
+            ];
+        }
+        if ($estado == $this->cancelado) {
+            return [
+                'status' => $estado,
+                'fecha_declinacion_sucursal' => new DateTime(),
+                'codigo_usuario_rechaza' => $datos['codigo_usuario_rechaza']
+            ];
         }
     }
 
@@ -62,18 +73,19 @@ class CambiarEstadoTrasladoController extends Controller
         return $this->CambiarEstado($request, $this->cancelado);
     }
 
-    public function VerificarDisponibilidadTraslado($uuid, $accion){
+    public function VerificarDisponibilidadTraslado($uuid, $accion)
+    {
         $traslado = Traslado::where('uuid', $uuid)->first();
-        if(!$traslado){
+        if (!$traslado) {
             throw new Exception('El traslado no existe');
         }
-        if($accion == $this->cancelado){
-            if($traslado->status === $this->cancelado || $traslado->status === $this->finalizado){
+        if ($accion == $this->cancelado) {
+            if ($traslado->status === $this->cancelado || $traslado->status === $this->finalizado) {
                 throw new Exception('El traslado ya no esta disponible');
             }
         }
-        if($accion == $this->finalizado){
-            if($traslado->status === $this->cancelado){
+        if ($accion == $this->finalizado) {
+            if ($traslado->status === $this->cancelado) {
                 throw new Exception('El traslado ya no esta disponible');
             }
         }

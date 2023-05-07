@@ -22,6 +22,7 @@ class TrasladoParser
         $traslado->observaciones_envio = Prop::find('observaciones_envio', $arr, '');
         $traslado->codigo_usuario_envia = Prop::find('codigo_usuario_envia', $arr, '');
         $traslado->observaciones_recepcion = Prop::find('observaciones_recepcion', $arr, '');
+        $traslado->observaciones_envio = Prop::find('observaciones_envio', $arr, '');
         $traslado->fecha_envio = DateParser::FromJSDateObject(Prop::find('timestamp_envio', $arr, null));
         $traslado->fecha_recepcion_sucursal = DateParser::FromJSDateObject(Prop::find('timestamp_aceptado', $arr, null));
         $traslado->fecha_declinacion_sucursal = DateParser::FromJSDateObject(Prop::find('timestamp_rechazado', $arr, null));
