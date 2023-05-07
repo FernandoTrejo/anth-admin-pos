@@ -14,7 +14,7 @@ class ConsultarMenuProductosController extends Controller
     public function Consultar(){
         try {
             $categorias = CategoriaMenu::all()->toArray();
-            $productos = Producto::all()->toArray();
+            $productos = Producto::with('ProductosContenidos')->get()->toArray();
             $response =  new APIResponse(
                 200,
                 true,

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Producto extends Model
 {
@@ -30,4 +31,8 @@ class Producto extends Model
         'permitir_cambio_nombre_caja',
         'controlar_existencias'
     ];
+
+    public function ProductosContenidos() : HasMany{
+        return $this->hasMany(ProductoContenido::class, 'producto_id');
+    }
 }
