@@ -15,6 +15,7 @@ class TransaccionProducto extends Model
         'codigo_producto',
         'nombre_producto',
         'precio',
+        'costo',
         'cantidad',
         'subtotal',
         'porcentaje_descuento',

@@ -31,12 +31,13 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login-attempt');
-
 // TRASLADOS
 Route::prefix('traslados')->group(function () {
     // Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
@@ -81,9 +82,6 @@ Route::prefix('vendedores')->group(function () {
     Route::get('consultar_todos', [ConsultarVendedoresController::class, 'ConsultarTodos']);
 });
 
-
-
-
 Route::prefix('sync_server')->group(function () {
     Route::post('sync_transacciones_pendientes', [ImportarTransaccionesPendientesController::class, 'Importar']);
     Route::post('sync_kardex_pendientes', [ImportarKardexPendienteController::class, 'Importar']);
@@ -92,21 +90,6 @@ Route::prefix('sync_server')->group(function () {
 });
 
 
-
-
-
-
-
-
-Route::post('public_presence/auth', function(){
-    $user = new GenericUser(['id' => microtime()]);
-
-    request()->setUserResolver(function () use ($user) {
-        return $user;
-    });
-
-    return Broadcast::auth(request());
-});
 
 
 

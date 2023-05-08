@@ -11,6 +11,7 @@ class TransaccionProductoParser{
         $transaccionProducto->codigo_producto = Prop::find('codigo_producto', $arr, '');
         $transaccionProducto->nombre_producto = Prop::find('nombre_producto', $arr, '');
         $transaccionProducto->precio = Prop::find('precio', $arr, 0);
+        $transaccionProducto->costo = Prop::find('costo', $arr, 0);
         $transaccionProducto->cantidad = Prop::find('cantidad', $arr, 0);
         $transaccionProducto->subtotal = Prop::find('subtotal', $arr, 0);
         $transaccionProducto->porcentaje_descuento = Prop::find('porcentaje_descuento', $arr, 0);

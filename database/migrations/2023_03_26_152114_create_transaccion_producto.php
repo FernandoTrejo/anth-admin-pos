@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('codigo_producto');
             $table->string('nombre_producto');
             $table->double('precio');
+            $table->double('costo');
             $table->integer('cantidad');
             $table->double('subtotal');
             $table->double('porcentaje_descuento')->default(0);

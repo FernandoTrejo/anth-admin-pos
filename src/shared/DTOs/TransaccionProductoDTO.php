@@ -7,6 +7,7 @@ class TransaccionProductoDTO
     public $codigo_producto;
     public $nombre_producto;
     public $precio;
+    public $costo;
     public $cantidad;
     public $subtotal;
     public $porcentaje_descuento;
@@ -22,6 +23,7 @@ class TransaccionProductoDTO
             'codigo_producto' => $this->codigo_producto,
             'nombre_producto' => $this->nombre_producto,
             'precio' => $this->precio,
+            'costo' => $this->costo,
             'cantidad' => $this->cantidad,
             'codigo_orden' => $this->codigo_orden,
             'subtotal' => $this->subtotal,
