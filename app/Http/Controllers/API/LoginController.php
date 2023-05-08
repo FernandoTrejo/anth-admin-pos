@@ -22,7 +22,7 @@ class LoginController extends Controller
             if (Auth::attempt($credentials)) {
                 $user = User::where('username', $credentials['username'])->with('permissions')->first();
                 
-                $token = $user->createToken($user->name)->plainTextToken;
+                $token = $user->createToken($user->name)->accessToken;
                 $datosUser = $user->toArray();
                 $datosUser['token'] = $token;
                 $responseOK = new APIResponse(200, true, 'Credenciales correctas', [

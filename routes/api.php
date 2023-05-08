@@ -31,10 +31,13 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::get('/user', function (Request $request) {
+//         return $request->user();
+//     });
+// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login-attempt');
@@ -88,8 +91,3 @@ Route::prefix('sync_server')->group(function () {
     Route::post('sync_cortes_pendientes', [ImportarCortesPendientesController::class, 'Importar']);
     Route::post('sync_traslados_pendientes', [ImportarTrasladosController::class, 'Importar']);
 });
-
-
-
-
-
