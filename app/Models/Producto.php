@@ -29,7 +29,8 @@ class Producto extends Model
         'permitir_ajuste',
         'permitir_cambio_precio_caja',
         'permitir_cambio_nombre_caja',
-        'controlar_existencias'
+        'controlar_existencias',
+        'costo_promedio'
     ];
 
     public function ProductosContenidos() : HasMany{

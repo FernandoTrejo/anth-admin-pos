@@ -13,10 +13,11 @@ class ConsultarInventarioController extends Controller
     {
         try {
             $inventario = [];
+
             if ($take > 0) {
-                $inventario = Producto::where('status', 'A')->skip($skip)->take($take)->get()->toArray();
+                $inventario = Producto::skip($skip)->take($take)->get()->toArray();
             } else {
-                $inventario = Producto::where('status', 'A')->get()->toArray();
+                $inventario = Producto::get()->toArray();
             }
 
             $response =  new APIResponse(
@@ -43,7 +44,7 @@ class ConsultarInventarioController extends Controller
     public function CantidadInventarioActivo()
     {
         try {
-            $count = Producto::where('status', 'A')->count();
+            $count = Producto::count();
             $response =  new APIResponse(
                 200,
                 true,
