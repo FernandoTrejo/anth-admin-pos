@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CambiarEstadoTrasladoController;
+use App\Http\Controllers\API\ConsultarDescuentosProductoController;
 use App\Http\Controllers\API\ConsultarInfoCajasController;
 use App\Http\Controllers\API\ConsultarInventarioController;
 use Illuminate\Http\Request;
@@ -8,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\ConsultarMenuProductosController;
+use App\Http\Controllers\API\ConsultarPreciosProductoController;
+use App\Http\Controllers\API\ConsultarProductosContenidosController;
 use App\Http\Controllers\API\ConsultarSucursalesInfoController;
 use App\Http\Controllers\API\ConsultarTrasladosController;
 use App\Http\Controllers\API\ConsultarUsuariosPOSController;
@@ -16,9 +19,8 @@ use App\Http\Controllers\API\ImportarCortesPendientesController;
 use App\Http\Controllers\API\ImportarKardexPendienteController;
 use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
 use App\Http\Controllers\API\ImportarTrasladosController;
-use App\Http\Controllers\TrasladoController;
-use Illuminate\Auth\GenericUser;
-use Illuminate\Support\Facades\Broadcast;
+use App\Http\Controllers\API\ConsultarInfoProductoController;
+use App\Http\Controllers\API\GuardarProductoContenidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +60,13 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('inventario')->group(function () {
         Route::get('consultar_inventario_activo/{skip}/{take}', [ConsultarInventarioController::class, 'ConsultarInventarioActivo']);
         Route::get('consultar_inventario_activo/cantidad', [ConsultarInventarioController::class, 'CantidadInventarioActivo']);
+        Route::get('consultar_informacion_producto/{codigo_producto}', [ConsultarInfoProductoController::class, 'Consultar']);
+        Route::get('consultar_precios_producto/{codigo_producto}', [ConsultarPreciosProductoController::class, 'Consultar']);
+        Route::get('consultar_productos_contenidos/{codigo_producto}', [ConsultarProductosContenidosController::class, 'Consultar']);
+        Route::get('consultar_descuentos_producto/{codigo_producto}', [ConsultarDescuentosProductoController::class, 'Consultar']);
+        
+        Route::post('productos_contenidos/guardar', [GuardarProductoContenidoController::class, 'Guardar']);
+        
     });
 
     // Menu

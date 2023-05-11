@@ -36,4 +36,12 @@ class Producto extends Model
     public function ProductosContenidos() : HasMany{
         return $this->hasMany(ProductoContenido::class, 'producto_id');
     }
+
+    public function precios() : HasMany{
+        return $this->hasMany(PrecioProducto::class, 'producto_id');
+    }
+
+    public function descuentos() : HasMany{
+        return $this->hasMany(DescuentoProducto::class, 'producto_id');
+    }
 }
