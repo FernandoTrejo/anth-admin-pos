@@ -37,7 +37,7 @@ class ConsultarSucursalesInfoController extends Controller
 
     public function ConsultarInfoSucursal($codigo){
         try {
-            $sucursal = Sucursal::where('codigo', $codigo)->with('formasPago')->first()->toArray();
+            $sucursal = Sucursal::where('codigo', $codigo)->with('formasPago')->with('cajas')->first()->toArray();
 
             $response =  new APIResponse(
                 200,
