@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\CambiarEstadoTrasladoController;
 use App\Http\Controllers\API\ConsultarDescuentosProductoController;
 use App\Http\Controllers\API\ConsultarInfoCajasController;
+use App\Http\Controllers\API\ConsultarInfoEmpresaController;
 use App\Http\Controllers\API\ConsultarInventarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ use App\Http\Controllers\API\ImportarKardexPendienteController;
 use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
 use App\Http\Controllers\API\ImportarTrasladosController;
 use App\Http\Controllers\API\ConsultarInfoProductoController;
+use App\Http\Controllers\API\EliminarProductoContenidoController;
 use App\Http\Controllers\API\GuardarProductoContenidoController;
 
 /*
@@ -42,7 +44,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function () {
-
+    Route::get('empresa-info', [ConsultarInfoEmpresaController::class, 'Consultar']);
 
     // TRASLADOS
     Route::prefix('traslados')->group(function () {
@@ -64,8 +66,9 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_precios_producto/{codigo_producto}', [ConsultarPreciosProductoController::class, 'Consultar']);
         Route::get('consultar_productos_contenidos/{codigo_producto}', [ConsultarProductosContenidosController::class, 'Consultar']);
         Route::get('consultar_descuentos_producto/{codigo_producto}', [ConsultarDescuentosProductoController::class, 'Consultar']);
-        
         Route::post('productos_contenidos/guardar', [GuardarProductoContenidoController::class, 'Guardar']);
+        Route::post('productos_contenidos/eliminar', [EliminarProductoContenidoController::class, 'Eliminar']);
+
         
     });
 

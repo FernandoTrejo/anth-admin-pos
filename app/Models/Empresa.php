@@ -18,6 +18,7 @@ class Empresa extends Model
         'actividad_economica',
         'direccion',
         'nrc',
-        'nit'
+        'nit',
+        'iva'
     ];
 }

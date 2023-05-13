@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('nrc');
             $table->string('nit');
+
+            //configuraciones
+            $table->double('IVA')->default(13);
             $table->timestamps();
         });
     }
