@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\Cajas\ConsultarCajaController;
+use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
+use App\Http\Controllers\API\Cajas\EditarInfoFacturaController;
+use App\Http\Controllers\API\Cajas\EditarInfoTicketController;
 use App\Http\Controllers\API\CambiarEstadoTrasladoController;
 use App\Http\Controllers\API\ConsultarDescuentosProductoController;
 use App\Http\Controllers\API\ConsultarInfoCajasController;
@@ -91,6 +95,10 @@ Route::middleware('auth:api')->group(function () {
     //cajas
     Route::prefix('cajas')->group(function () {
         Route::get('consultar_info/{codigo}', [ConsultarInfoCajasController::class, 'ConsultarInfoCaja']);
+    Route::get('consultar_info_emision/{codigo}', [ConsultarCajaController::class, 'ConsultarCodigo']);
+        Route::post('editar_emision_ticket', [EditarInfoTicketController::class, 'Editar']);
+        Route::post('editar_emision_factura', [EditarInfoFacturaController::class, 'Editar']);
+        Route::post('editar_emision_credito', [EditarInfoCreditoFiscalController::class, 'Editar']);
     });
 
     //vendedores

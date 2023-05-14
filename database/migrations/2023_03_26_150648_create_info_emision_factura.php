@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('info_emision_factura', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_serie');//numero de serie de los documentos a emitir
-            $table->string('rango_documentos');//rango de documentos autorizados
-            $table->string('numero_resolucion');//numero y fecha de resolución de los documentos (tickets)
-            $table->date('fecha_resolucion');
-            $table->string('nombre_empresa');
-            $table->string('nit_empresa');
-            $table->string('lugar_emision');
-            $table->foreignId('sucursal_id')->constrained('sucursal');
+            $table->string('numero_serie')->default('')->nullable();//numero de serie de los documentos a emitir
+            $table->string('rango_documentos')->default('')->nullable();//rango de documentos autorizados
+            $table->string('numero_resolucion')->default('')->nullable();//numero y fecha de resolución de los documentos (tickets)
+            $table->string('fecha_resolucion')->default('')->nullable();
+            $table->string('nombre_empresa')->default('')->nullable();
+            $table->string('nit_empresa')->default('')->nullable();
+            $table->string('lugar_emision')->default('')->nullable();
+            $table->foreignId('caja_id')->constrained('caja');
             $table->timestamps();
         });
     }

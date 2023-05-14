@@ -47,7 +47,78 @@ class SucursalSeeder extends Seeder
             'status' => 'activo',
             'clave_centro_costo' => '7'
         ]);
-
+        $terminal1 = Sucursal::create([
+            'codigo' => 'c20cb0c9-3e23-4fd8-abf3-49de5d0f6d5d',
+            'nombre' => 'SUC. TERMINAL',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '2'
+        ]);
+        $carasucia1 = Sucursal::create([
+            'codigo' => '74335ca8-02e5-4b54-9221-0d3231653d90',
+            'nombre' => 'SUC. CARA SUCIA 1',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '5'
+        ]);
+        $centro = Sucursal::create([
+            'codigo' => 'a5e08867-31c9-43fb-a077-54138c554085',
+            'nombre' => 'SUC. CENTRO',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '6'
+        ]);
+        $linea = Sucursal::create([
+            'codigo' => '26c8782e-1756-4732-8521-4c86b9d0c7d2',
+            'nombre' => 'SUC. LINEA FERREA',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '12'
+        ]);
+        $acajutla1 = Sucursal::create([
+            'codigo' => 'bb599492-a093-4fd9-80b5-618fe8f1345f',
+            'nombre' => 'SUC. ACAJUTLA 1',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '13'
+        ]);
+        $carasucia2 = Sucursal::create([
+            'codigo' => '4653e24c-823d-44cc-90a2-abd56f37dade',
+            'nombre' => 'SUC. CARA SUCIA 2',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '64'
+        ]);
+        $casamatriz = Sucursal::create([
+            'codigo' => 'fb807e8a-afa3-43b3-80c8-b434399f5f91',
+            'nombre' => 'SUC. CASA MATRIZ',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '1'
+        ]);
+        $acajutla2 = Sucursal::create([
+            'codigo' => '4f3166ac-73a3-453f-a017-1e40d4ec26a1',
+            'nombre' => 'SUC. ACAJUTLA 2',
+            'direccion' => '',
+            'telefono' => '',
+            'correo' => '',
+            'status' => 'activo',
+            'clave_centro_costo' => '148'
+        ]);
 
         $cajaEncuentro = Caja::create([
             'codigo' => '56ccbec0-6bf3-4507-9aad-3a80ed6e651e',
