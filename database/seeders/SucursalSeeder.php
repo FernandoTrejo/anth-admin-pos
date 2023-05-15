@@ -122,8 +122,27 @@ class SucursalSeeder extends Seeder
 
         $cajaEncuentro = Caja::create([
             'codigo' => '56ccbec0-6bf3-4507-9aad-3a80ed6e651e',
-            'titulo' => 'Caja #1',
+            'titulo' => 'Caja #1 Encuentro',
+            'tipo' => 'caja_principal',
             'sucursal_id' => $encuentro->id
+        ]);
+        $cajaEncuentro2 = Caja::create([
+            'codigo' => '10541144-c8bb-4e83-ad21-430ba52f08ca',
+            'titulo' => 'Caja #2 Encuentro',
+            'tipo' => 'caja_secundaria',
+            'sucursal_id' => $encuentro->id
+        ]);
+        $cajaCentro1 = Caja::create([
+            'codigo' => '4ee94184-76f7-4a88-b4a7-21e6717fd9f6',
+            'titulo' => 'Caja #1 Centro',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $centro->id
+        ]);
+        $cajaCentro2 = Caja::create([
+            'codigo' => 'e9e443ad-7327-403f-8e10-b493c787b44d',
+            'titulo' => 'Caja #2 Centro',
+            'tipo' => 'caja_secundaria',
+            'sucursal_id' => $centro->id
         ]);
         $cajaMetro = Caja::create([
             'codigo' => '275fd84d-9a5b-4e01-b1fe-09111295163c',
@@ -143,7 +162,64 @@ class SucursalSeeder extends Seeder
             'tipo' => 'caja_movil',
             'sucursal_id' => $metrocentro->id
         ]);
-        $cajas = [$cajaEncuentro, $cajaMetro, $cajaMetroSecundaria, $cajaMetroMovil];
+        $cajaTerminal = Caja::create([
+            'codigo' => 'd608027f-f694-41a0-8416-2b0d0e2da522',
+            'titulo' => 'Caja #1 Terminal',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $terminal1->id
+        ]);
+        $cajaCarasucia1 = Caja::create([
+            'codigo' => '49a8946e-463d-43eb-ae80-7431dc7227ea',
+            'titulo' => 'Caja #1 Cara Sucia 1',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $carasucia1->id
+        ]);
+        $cajaCarasucia2 = Caja::create([
+            'codigo' => '2b6fbe47-52e6-4fa6-ac86-686c60204a9b',
+            'titulo' => 'Caja #1 Cara Sucia 2',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $carasucia2->id
+        ]);
+        $cajaLinea = Caja::create([
+            'codigo' => '1efc16b6-7f3c-4e40-8994-d779f481b2d7',
+            'titulo' => 'Caja #1 Linea Ferrea',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $linea->id
+        ]);
+        $cajaAcajutla1 = Caja::create([
+            'codigo' => '020694c4-0c99-4541-9418-83bd9194baa1',
+            'titulo' => 'Caja #1 Acajutla 1',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $acajutla1->id
+        ]);
+        $cajaAcajutla2 = Caja::create([
+            'codigo' => '7af4fed5-55cf-4276-ae4e-040ff4641327',
+            'titulo' => 'Caja #1 Acajutla 2',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $acajutla2->id
+        ]);
+        $cajaMatriz = Caja::create([
+            'codigo' => '092e52ea-f95c-4d9e-a442-31790efb9046',
+            'titulo' => 'Caja #1 Casa Matriz',
+            'tipo' => 'caja_principal',
+            'sucursal_id' => $casamatriz->id
+        ]);
+        $cajas = [
+            $cajaEncuentro, 
+            $cajaMetro, 
+            $cajaMetroSecundaria, 
+            $cajaMetroMovil,
+            $cajaMatriz,
+            $cajaAcajutla2,
+            $cajaAcajutla1,
+            $cajaLinea,
+            $cajaCarasucia2,
+            $cajaCarasucia1,
+            $cajaTerminal,
+            $cajaEncuentro2,
+            $cajaCentro1,
+            $cajaCentro2
+        ];
 
         //creacion de bodegas
         Bodega::create([
@@ -162,6 +238,18 @@ class SucursalSeeder extends Seeder
             'sucursal_id' => $metrocentro->id
         ]);
 
+        $sucursales = [
+            $encuentro,
+            $metrocentro,
+            $terminal1,
+            $carasucia1,
+            $centro,
+            $linea,
+            $acajutla1,
+            $carasucia2,
+            $casamatriz,
+            $acajutla2,
+        ];
 
         //creacion de formas de pago basicas
         $efectivo = FormaPago::create([
@@ -195,13 +283,11 @@ class SucursalSeeder extends Seeder
             'status' => 'activo'
         ]);
 
-        //enlazar formas de pago
-        $metrocentro->formasPago()->sync([
-            $efectivo->id, $tarjeta->id, $anticipo->id, $valeDescuento->id
-        ]);
-        $encuentro->formasPago()->sync([
-            $efectivo->id, $tarjeta->id, $anticipo->id, $goeat->id, $valeDescuento->id
-        ]);
+        foreach($sucursales as $sucursal){
+            $sucursal->formasPago()->sync([
+                $efectivo->id, $tarjeta->id, $anticipo->id, $goeat->id, $valeDescuento->id
+            ]);
+        }
 
 
         //creacion de numeradores

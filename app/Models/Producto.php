@@ -30,7 +30,8 @@ class Producto extends Model
         'permitir_cambio_precio_caja',
         'permitir_cambio_nombre_caja',
         'controlar_existencias',
-        'costo_promedio'
+        'costo_promedio',
+        'updated_at'
     ];
 
     public function ProductosContenidos() : HasMany{
@@ -43,5 +44,9 @@ class Producto extends Model
 
     public function descuentos() : HasMany{
         return $this->hasMany(DescuentoProducto::class, 'producto_id');
+    }
+
+    public function derivados() : HasMany{
+        return $this->hasMany(ProductoDerivado::class, 'producto_id');
     }
 }
