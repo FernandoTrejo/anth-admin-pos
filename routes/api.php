@@ -27,6 +27,7 @@ use App\Http\Controllers\API\ImportarTrasladosController;
 use App\Http\Controllers\API\ConsultarInfoProductoController;
 use App\Http\Controllers\API\EliminarProductoContenidoController;
 use App\Http\Controllers\API\GuardarProductoContenidoController;
+use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function () {
     Route::get('empresa-info', [ConsultarInfoEmpresaController::class, 'Consultar']);
+
+    // USUARIOS
+    Route::prefix('usuarios')->group(function () {
+        Route::post('registrar_usuario_caja', [RegistrarNuevoUsuarioCajaController::class, 'Registrar']);
+        
+    });
 
     // TRASLADOS
     Route::prefix('traslados')->group(function () {
