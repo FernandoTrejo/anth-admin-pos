@@ -17,6 +17,9 @@ return new class extends Migration
             $table->double('porcentaje_descuento');
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
+            $table->string('fecha_inicio_timestamp');
+            $table->string('fecha_fin_timestamp');
+
             $table->string('status');//activo inactivo
             $table->string('codigo_producto');//activo inactivo
             $table->foreignId('producto_id')->constrained('producto');

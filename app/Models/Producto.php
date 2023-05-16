@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Producto extends Model
@@ -38,8 +39,8 @@ class Producto extends Model
         return $this->hasMany(ProductoContenido::class, 'producto_id');
     }
 
-    public function precios() : HasMany{
-        return $this->hasMany(PrecioProducto::class, 'producto_id');
+    public function precios() : BelongsToMany{
+        return $this->belongsToMany(TipoPrecio::class, 'producto_menu_precio', 'producto_id', 'precio_id');
     }
 
     public function descuentos() : HasMany{

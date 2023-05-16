@@ -18,6 +18,7 @@ class ConsultarProductosController extends Controller
                 'descuentos',
                 'derivados'
             ])->get()->toArray();
+
             $response =  new APIResponse(
                 200,
                 true,

@@ -106,7 +106,7 @@ Route::middleware('auth:api')->group(function () {
     //cajas
     Route::prefix('cajas')->group(function () {
         Route::get('consultar_info/{codigo}', [ConsultarInfoCajasController::class, 'ConsultarInfoCaja']);
-    Route::get('consultar_info_emision/{codigo}', [ConsultarCajaController::class, 'ConsultarCodigo']);
+        Route::get('consultar_info_emision/{codigo}', [ConsultarCajaController::class, 'ConsultarCodigo']);
         Route::post('editar_emision_ticket', [EditarInfoTicketController::class, 'Editar']);
         Route::post('editar_emision_factura', [EditarInfoFacturaController::class, 'Editar']);
         Route::post('editar_emision_credito', [EditarInfoCreditoFiscalController::class, 'Editar']);

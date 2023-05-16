@@ -11,7 +11,7 @@ class ConsultarInfoCajasController extends Controller
 {
     public function ConsultarInfoCaja($codigo){
         try {
-            $caja = Caja::where('codigo', $codigo)->with('numeradores')->first()->toArray();
+            $caja = Caja::where('codigo', $codigo)->with(['numeradores','infoticket','infofactura','infocredito'])->first()->toArray();
 
             $response =  new APIResponse(
                 200,

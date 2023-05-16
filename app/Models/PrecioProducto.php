@@ -12,9 +12,9 @@ class PrecioProducto extends Model
     protected $table = 'producto_menu_precio';
 
     protected $fillable = [
-        'titulo',
-        'descripcion',
         'precio',
         'producto_id',
+        'precio_id'
+
     ];
 }
