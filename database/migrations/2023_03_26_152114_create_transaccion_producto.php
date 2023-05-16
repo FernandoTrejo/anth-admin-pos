@@ -24,6 +24,9 @@ return new class extends Migration
             $table->double('precio_sin_descuento');
             $table->string('codigo_orden');
             $table->string('codigo_corte_x');
+
+            $table->double('iva');
+            $table->string('motivo_descuento')->default('');
             $table->timestamps();
         });
     }

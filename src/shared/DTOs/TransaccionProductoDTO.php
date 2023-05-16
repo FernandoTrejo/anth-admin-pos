@@ -15,6 +15,8 @@ class TransaccionProductoDTO
     public $precio_sin_descuento;
     public $codigo_orden;
     public $codigo_corte_x;
+    public $iva;
+    public $motivo_descuento;
 
 
     public function toArray()
@@ -30,7 +32,9 @@ class TransaccionProductoDTO
             'porcentaje_descuento' => $this->porcentaje_descuento,
             'valor_descuento' => $this->valor_descuento,
             'precio_sin_descuento' => $this->precio_sin_descuento,
-            'codigo_corte_x' => $this->codigo_corte_x
+            'codigo_corte_x' => $this->codigo_corte_x,
+            'iva' => $this->iva,
+            'motivo_descuento' => $this->motivo_descuento
         ];
     }
 }

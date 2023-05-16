@@ -24,6 +24,7 @@ class TransaccionDTO
     public $tipo_transaccion;
     public $descuento_total;
     public $caja_id;
+    public $iva;
 
     public $pagos;
     public $productos_orden;
@@ -52,6 +53,7 @@ class TransaccionDTO
             'tipo_transaccion' => $this->tipo_transaccion,
             'descuento_total' => $this->descuento_total ? $this->descuento_total : 0,
             'caja_id' => $this->caja_id,
+            'iva' => $this->iva,
             'pagos' => $this->pagos ? $this->pagos : [],
             'productos_orden' => $this->productos_orden ? $this->productos_orden : []
         ];

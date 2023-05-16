@@ -23,5 +23,7 @@ class TransaccionProducto extends Model
         'precio_sin_descuento',
         'codigo_orden',
         'codigo_corte_x',
+        'iva',
+        'motivo_descuento'
     ];
 }

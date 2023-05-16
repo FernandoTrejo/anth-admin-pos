@@ -19,6 +19,8 @@ class TransaccionProductoParser{
         $transaccionProducto->precio_sin_descuento = Prop::find('precio_sin_descuento', $arr, 0);
         $transaccionProducto->codigo_orden = Prop::find('codigo_orden', $arr, '');
         $transaccionProducto->codigo_corte_x = Prop::find('codigo_corte_x', $arr, '');
+        $transaccionProducto->iva = Prop::find('iva', $arr, 0);
+        $transaccionProducto->motivo_descuento = Prop::find('motivo_descuento', $arr, '');
         return $transaccionProducto;
     }
 

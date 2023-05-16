@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('codigo_usuario');
             $table->string('tipo_transaccion');
             $table->foreignId('caja_id')->constrained('caja');
+            $table->double('iva')->default(0);
             $table->timestamps();
         });
     }
