@@ -9,6 +9,7 @@ use App\Models\Sucursal;
 use App\Models\Transaccion;
 use App\Models\TransaccionPago;
 use App\Models\TransaccionProducto;
+use App\Models\VentaMovil;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ use Src\shared\DTOs\TransaccionDTO;
 use Src\shared\Parsers\PagoParser;
 use Src\shared\Parsers\TransaccionParser;
 use Src\shared\Parsers\TransaccionProductoParser;
+use Src\shared\StatusVenta;
 
 class ImportarTransaccionesPendientesController extends Controller
 {
@@ -104,13 +106,13 @@ class ImportarTransaccionesPendientesController extends Controller
                 $productosInsert = TransaccionProductoParser::parseManyToArray($productosOrdenArr);
                 TransaccionProducto::insert($productosInsert);
 
-                if(count($productosInsert) > 0){
-                    // InventarioModificado::dispatch(
-                    //     $originalArr['codigo_sucursal'],
-                    //     $originalArr['codigo_caja'],
-                    //     $productosInsert,
-                    // );
-                }   
+                $ventaMovil = VentaMovil::where('codigo', $originalArr['codigo'])->first();
+                if(!$ventaMovil){
+                    //no era venta movil
+                }else{
+                    $ventaMovil->status = StatusVenta::$cerrada;
+                    $ventaMovil->save();
+                }
             });
             return true;
         } catch (\Throwable $th) {

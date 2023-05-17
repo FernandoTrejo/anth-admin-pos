@@ -19,10 +19,14 @@ class Corte extends Model
         'fecha_fin_corte',
         'codigo_usuario',
         'codigo_sucursal',
-        'codigo_caja'
+        'codigo_caja',
+        'usuario_code_cierre',
+        'codigo_corte_diario',
+        'codigo_corte_mensual',
     ];
 
-    public function montosAsignados() : HasMany{
+    public function montosAsignados(): HasMany
+    {
         return $this->hasMany(CorteMontoAsignado::class, 'corte_id');
     }
 }

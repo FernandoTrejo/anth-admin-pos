@@ -29,6 +29,7 @@ use App\Http\Controllers\API\ConsultarMenuController;
 use App\Http\Controllers\API\ConsultarProductosController;
 use App\Http\Controllers\API\EliminarProductoContenidoController;
 use App\Http\Controllers\API\GuardarProductoContenidoController;
+use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 
 /*
@@ -76,6 +77,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_inventario_activo/{skip}/{take}', [ConsultarInventarioController::class, 'ConsultarInventarioActivo']);
         Route::get('consultar_inventario_activo/cantidad', [ConsultarInventarioController::class, 'CantidadInventarioActivo']);
         Route::get('consultar_productos_general', [ConsultarProductosController::class, 'Consultar']);
+        Route::get('consultar_productos_ult_mod', [ConsultarProductosController::class, 'UltimosModificados']);
         Route::get('consultar_informacion_producto/{codigo_producto}', [ConsultarInfoProductoController::class, 'Consultar']);
         Route::get('consultar_precios_producto/{codigo_producto}', [ConsultarPreciosProductoController::class, 'Consultar']);
         Route::get('consultar_productos_contenidos/{codigo_producto}', [ConsultarProductosContenidosController::class, 'Consultar']);
@@ -84,6 +86,10 @@ Route::middleware('auth:api')->group(function () {
         Route::post('productos_contenidos/eliminar', [EliminarProductoContenidoController::class, 'Eliminar']);
 
         
+    });
+
+    Route::prefix('transacciones')->group(function () {
+        Route::get('moviles/obtener_sucursal/{codigoSucursal}', [ConsultarVentasMovilesController::class, 'Consultar']);
     });
 
     // Menu

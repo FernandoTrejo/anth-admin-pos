@@ -28,6 +28,10 @@ class CorteParser
         $corte->codigo_sucursal = Prop::find('codigo_sucursal', $arr, '');
 
         $corte->codigo_usuario = Prop::find('usuario_code', $arr, '');
+
+        $corte->usuario_code_cierre = Prop::find('usuario_code_cierre', $arr, '');
+        $corte->codigo_corte_diario = Prop::find('codigo_corte_diario', $arr, '');
+        $corte->codigo_corte_mensual = Prop::find('codigo_corte_mensual', $arr, '');
         $corte->montos = Prop::find('montos', $arr, []);
 
         return $corte;

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('codigo_usuario');
             $table->string('codigo_sucursal');
             $table->string('codigo_caja');
+            $table->string('usuario_code_cierre');
+            $table->string('codigo_corte_diario');
+            $table->string('codigo_corte_mensual');
             $table->timestamps();
         });
     }
