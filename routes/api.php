@@ -30,6 +30,7 @@ use App\Http\Controllers\API\ConsultarProductosController;
 use App\Http\Controllers\API\EliminarProductoContenidoController;
 use App\Http\Controllers\API\GuardarProductoContenidoController;
 use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
+use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 
 /*
@@ -90,6 +91,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('transacciones')->group(function () {
         Route::get('moviles/obtener_sucursal/{codigoSucursal}', [ConsultarVentasMovilesController::class, 'Consultar']);
+        Route::post('moviles/importar', [ImportarVentaMovil::class, 'importar']);
     });
 
     // Menu

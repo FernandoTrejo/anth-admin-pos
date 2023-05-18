@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API\movil;
 
 use App\Http\Controllers\Controller;
+use App\Models\Caja;
 use App\Models\VentaMovil;
 use App\Models\VentaMovilProducto;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Src\shared\APIResponse;
@@ -14,10 +16,19 @@ class ImportarVentaMovil extends Controller
     public function importar(Request $request)
     {
         try {
-            DB::transaction(function () use ($request) {
+            $caja = Caja::where('codigo', $request['codigo_caja'])->first();
+            if(!$caja){
+                $response = new APIResponse(404, false, 'No existe codigo de caja especificada', []);
+                return response()->json($response->toArray());
+            }
+
+            DB::transaction(function () use ($request, $caja) {
+                $timestamp = $request['fechaISO'];
+                $date = new DateTime();
+                $date->setTimestamp($timestamp / 1000);
                 VentaMovil::create([
                     'codigo' => $request['codigo'],
-                    'fecha' => $request['fechaISO'],
+                    'fecha' => $date,
                     'nombre_cliente' => $request['nombre_cliente'],
                     'total' => $request['total'],
                     'status' => $request['status'],
@@ -25,10 +36,10 @@ class ImportarVentaMovil extends Controller
                     'codigo_caja' => $request['codigo_caja'],
                     'codigo_sucursal' => $request['codigo_sucursal'],
                     'codigo_usuario' => $request['codigo_usuario'],
-                    'caja_id'   => $request['caja_id'],
+                    'caja_id'   => $caja->id,
                     'iva'  => $request['iva']
                 ]);
-
+        
                 $productos = $request['productos_orden'];
                 foreach ($productos as $productoOrden) {
                     VentaMovilProducto::create([
