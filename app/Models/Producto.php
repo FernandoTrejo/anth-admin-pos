@@ -40,7 +40,7 @@ class Producto extends Model
     }
 
     public function precios() : BelongsToMany{
-        return $this->belongsToMany(TipoPrecio::class, 'producto_menu_precio', 'producto_id', 'precio_id');
+        return $this->belongsToMany(TipoPrecio::class, 'producto_menu_precio', 'producto_id', 'precio_id')->withPivot('precio');
     }
 
     public function descuentos() : HasMany{

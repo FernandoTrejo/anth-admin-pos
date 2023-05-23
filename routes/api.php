@@ -27,6 +27,7 @@ use App\Http\Controllers\API\ImportarTransaccionesPendientesController;
 use App\Http\Controllers\API\ImportarTrasladosController;
 use App\Http\Controllers\API\ConsultarInfoProductoController;
 use App\Http\Controllers\API\ConsultarMenuController;
+use App\Http\Controllers\API\ConsultarPreciosController;
 use App\Http\Controllers\API\ConsultarProductosController;
 use App\Http\Controllers\API\EliminarProductoContenidoController;
 use App\Http\Controllers\API\GuardarProductoContenidoController;
@@ -101,6 +102,7 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('menu')->group(function () {
         Route::get('categorias_productos', [ConsultarMenuProductosController::class, 'Consultar']);
         Route::get('categorias', [ConsultarMenuController::class, 'Consultar']);
+        Route::get('precios', [ConsultarPreciosController::class, 'Consultar']);
     });
 
     // Usuarios

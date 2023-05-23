@@ -65,10 +65,12 @@ class UsuarioPOSRolSeeder extends Seeder
         $editar_config_globales = PermisoUsuarioPOS::create(['titulo' => 'editar-config-globales']);
         $ver_config_sincronizacion = PermisoUsuarioPOS::create(['titulo' => 'ver-config-sincronizacion']);
         $ver_panel_cortes = PermisoUsuarioPOS::create(['titulo' => 'ver-panel-cortes']);
+        $ver_panel_notificaciones = PermisoUsuarioPOS::create(['titulo' => 'ver-panel-notificaciones']);
         $hacer_corte_x = PermisoUsuarioPOS::create(['titulo' => 'hacer-corte-x']);
         $hacer_corte_z = PermisoUsuarioPOS::create(['titulo' => 'hacer-corte-z']);
-
-
+        $transformar_producto = PermisoUsuarioPOS::create(['titulo' => 'transformar-producto']);
+        $ver_transformaciones_producto = PermisoUsuarioPOS::create(['titulo' => 'ver-transformaciones-producto']);
+        $seleccionar_precio_producto = PermisoUsuarioPOS::create(['titulo' => 'seleccionar-precio-producto']);
 
 
         //enlazar permisos a roles
@@ -120,6 +122,10 @@ class UsuarioPOSRolSeeder extends Seeder
             $ver_panel_cortes->id,
             $hacer_corte_x->id,
             $hacer_corte_z->id,
+            $ver_panel_notificaciones->id,
+            $transformar_producto->id,
+            $ver_transformaciones_producto->id,
+            $seleccionar_precio_producto->id,
         ]);
         $encargado->permissions()->sync([
             $ver_dashboard->id,
@@ -149,6 +155,9 @@ class UsuarioPOSRolSeeder extends Seeder
             $ver_panel_cortes->id,
             $hacer_corte_x->id,
             $hacer_corte_z->id,
+            $ver_panel_notificaciones->id,
+            $transformar_producto->id,
+            $ver_transformaciones_producto->id,
         ]);
         $cajero->permissions()->sync([
             $ver_dashboard->id,
