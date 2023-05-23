@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActualizarEstadoVentaMovilController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
 use App\Http\Controllers\API\Cajas\EditarInfoFacturaController;
@@ -92,6 +93,8 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('transacciones')->group(function () {
         Route::get('moviles/obtener_sucursal/{codigoSucursal}', [ConsultarVentasMovilesController::class, 'Consultar']);
         Route::post('moviles/importar', [ImportarVentaMovil::class, 'importar']);
+        Route::post('moviles/cambiar_estado', [ActualizarEstadoVentaMovilController::class, 'CambiarEstado']);
+
     });
 
     // Menu
