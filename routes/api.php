@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ActualizarEstadoVentaMovilController;
+use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorTipoController;
+use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
 use App\Http\Controllers\API\Cajas\EditarInfoFacturaController;
@@ -89,6 +91,11 @@ Route::middleware('auth:api')->group(function () {
         Route::post('productos_contenidos/eliminar', [EliminarProductoContenidoController::class, 'Eliminar']);
 
         
+    });
+
+    Route::prefix('ajustes')->group(function () {
+        Route::get('tipo/{tipo_ajuste}/{skip}/{take}', [ConsultarAjustesPorTipoController::class, 'Consultar']);
+        Route::post('guardar', [GuardarAjusteController::class, 'Guardar']);
     });
 
     Route::prefix('transacciones')->group(function () {

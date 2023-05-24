@@ -12,6 +12,7 @@ class Ajuste extends Model
     protected $table = 'ajuste';
 
     protected $fillable = [
+        'numero',
         'fecha',
         'codigo_sucursal',
         'tipo',

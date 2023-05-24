@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ajuste', function (Blueprint $table) {
             $table->id();
             $table->dateTime('fecha');
+            $table->string('numero')->default('');
             $table->string('codigo_sucursal');
             $table->enum('tipo', ['favor', 'contra']);
             $table->foreignId('usuario_id')->constrained('users'); //usuario solicitante
