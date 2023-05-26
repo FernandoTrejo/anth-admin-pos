@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActualizarEstadoVentaMovilController;
+use App\Http\Controllers\API\Ajustes\CambiarEstadoAjusteController;
 use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorStatusController;
 use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorTipoController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
@@ -98,6 +99,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('tipo/{tipo_ajuste}/{skip}/{take}', [ConsultarAjustesPorTipoController::class, 'Consultar']);
         Route::get('status/{status_ajuste}/{skip}/{take}', [ConsultarAjustesPorStatusController::class, 'Consultar']);
         Route::post('guardar', [GuardarAjusteController::class, 'Guardar']);
+        Route::post('autorizar', [CambiarEstadoAjusteController::class, 'Aceptar']);
+        Route::post('rechazar', [CambiarEstadoAjusteController::class, 'Rechazar']);
     });
 
     Route::prefix('transacciones')->group(function () {
