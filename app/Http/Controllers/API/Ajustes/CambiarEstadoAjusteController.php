@@ -24,7 +24,7 @@ class CambiarEstadoAjusteController extends Controller
             $datos['codigo_usuario'] = $user_code;
 
             $cambios = $this->DatosSegunAccion($datos, $estado);
-            
+
             Ajuste::where('id', $datos['id'])->update($cambios);
 
             $response = new APIResponse(200, true, 'El estado ha sido modificado correctamente', []);
@@ -43,7 +43,7 @@ class CambiarEstadoAjusteController extends Controller
                 'fecha_autorizacion' => new DateTime(),
                 'codigo_usuario_autoriza' => $datos['codigo_usuario']
 
-               
+
             ];
         }
         if ($estado == StatusAjuste::$Denied) {
@@ -51,6 +51,11 @@ class CambiarEstadoAjusteController extends Controller
                 'status' => $estado,
                 'fecha_denegado' => new DateTime(),
                 'codigo_usuario_rechaza' => $datos['codigo_usuario']
+            ];
+        }
+        if ($estado == StatusAjuste::$Closed) {
+            return [
+                'status' => $estado
             ];
         }
     }
@@ -63,5 +68,10 @@ class CambiarEstadoAjusteController extends Controller
     public function Rechazar(Request $request)
     {
         return $this->CambiarEstado($request, StatusAjuste::$Denied);
+    }
+
+    public function Cerrar(Request $request)
+    {
+        return $this->CambiarEstado($request, StatusAjuste::$Closed);
     }
 }

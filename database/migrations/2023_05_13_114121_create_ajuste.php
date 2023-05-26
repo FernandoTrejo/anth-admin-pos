@@ -19,8 +19,8 @@ return new class extends Migration
             $table->enum('tipo', ['favor', 'contra']);
             $table->foreignId('usuario_id')->constrained('users'); //usuario solicitante
             $table->string('referencia')->default('');
-            $table->string('observaciones')->default('');
-            $table->enum('status', ['pendiente_autorizacion', 'autorizado', 'denegado'])->default('pendiente_autorizacion');
+            $table->text('observaciones')->default('');
+            $table->enum('status', ['pendiente_autorizacion', 'autorizado', 'denegado', 'cerrado'])->default('pendiente_autorizacion');
             $table->string('codigo_usuario_autoriza')->nullable();
             $table->dateTime('fecha_autorizacion')->nullable();
             $table->string('codigo_usuario_rechaza')->nullable();

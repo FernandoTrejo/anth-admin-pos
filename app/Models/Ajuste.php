@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ajuste extends Model
 {
@@ -25,4 +26,8 @@ class Ajuste extends Model
         'codigo_usuario_rechaza',
         'fecha_denegado'
     ];
+
+    public function productos() : HasMany{
+        return $this->hasMany(AjusteProducto::class, 'ajuste_id');
+    }
 }

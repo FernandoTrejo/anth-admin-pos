@@ -4,6 +4,9 @@ use App\Http\Controllers\ActualizarEstadoVentaMovilController;
 use App\Http\Controllers\API\Ajustes\CambiarEstadoAjusteController;
 use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorStatusController;
 use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorTipoController;
+use App\Http\Controllers\API\Ajustes\ConsultarAjustesProductosImportacionController;
+use App\Http\Controllers\API\Ajustes\ConsultarInfoAjusteController;
+use App\Http\Controllers\API\Ajustes\FinalizarAjusteController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
@@ -98,9 +101,12 @@ Route::middleware('auth:api')->group(function () {
     Route::prefix('ajustes')->group(function () {
         Route::get('tipo/{tipo_ajuste}/{skip}/{take}', [ConsultarAjustesPorTipoController::class, 'Consultar']);
         Route::get('status/{status_ajuste}/{skip}/{take}', [ConsultarAjustesPorStatusController::class, 'Consultar']);
+        Route::get('consultar_info/{id}', [ConsultarInfoAjusteController::class, 'Consultar']);
         Route::post('guardar', [GuardarAjusteController::class, 'Guardar']);
         Route::post('autorizar', [CambiarEstadoAjusteController::class, 'Aceptar']);
         Route::post('rechazar', [CambiarEstadoAjusteController::class, 'Rechazar']);
+        Route::post('finalizar', [FinalizarAjusteController::class, 'Finalizar']);
+        Route::post('consultar_productos_importacion', [ConsultarAjustesProductosImportacionController::class, 'Consultar']);
     });
 
     Route::prefix('transacciones')->group(function () {
