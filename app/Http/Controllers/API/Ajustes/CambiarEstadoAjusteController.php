@@ -24,7 +24,7 @@ class CambiarEstadoAjusteController extends Controller
             $datos['codigo_usuario'] = $user_code;
 
             $cambios = $this->DatosSegunAccion($datos, $estado);
-
+            $cambios['numero'] = $this->CalcularNumeroAjuste();
             Ajuste::where('id', $datos['id'])->update($cambios);
 
             $response = new APIResponse(200, true, 'El estado ha sido modificado correctamente', []);
@@ -58,6 +58,15 @@ class CambiarEstadoAjusteController extends Controller
                 'status' => $estado
             ];
         }
+    }
+
+    private function CalcularNumeroAjuste(){
+        $numero  = Ajuste::max('numero');
+        if(!$numero){
+            return 1;
+        }
+
+        return $numero + 1;
     }
 
     public function Aceptar(Request $request)
