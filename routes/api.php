@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorStatusController;
 use App\Http\Controllers\API\Ajustes\ConsultarAjustesPorTipoController;
 use App\Http\Controllers\API\Ajustes\ConsultarAjustesProductosImportacionController;
 use App\Http\Controllers\API\Ajustes\ConsultarInfoAjusteController;
+use App\Http\Controllers\API\Ajustes\EditarInfoAjusteController;
 use App\Http\Controllers\API\Ajustes\FinalizarAjusteController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
@@ -106,6 +107,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('autorizar', [CambiarEstadoAjusteController::class, 'Aceptar']);
         Route::post('rechazar', [CambiarEstadoAjusteController::class, 'Rechazar']);
         Route::post('finalizar', [FinalizarAjusteController::class, 'Finalizar']);
+        Route::post('editar', [EditarInfoAjusteController::class, 'Editar']);
         Route::post('consultar_productos_importacion', [ConsultarAjustesProductosImportacionController::class, 'Consultar']);
     });
 
