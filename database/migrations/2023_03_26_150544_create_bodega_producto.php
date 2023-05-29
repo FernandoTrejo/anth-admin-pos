@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('bodega_producto', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha');
             $table->string('codigo_producto');
-            $table->string('nombre_producto');
             $table->string('costo_producto');
-            $table->string('precio_producto');
-            $table->string('linea_producto_codigo');
-            $table->string('categoria_producto_codigo');
-            $table->foreignId('producto_id')->constrained('producto');
-            $table->foreignId('bodega_id')->constrained('bodega');
+            $table->string('clave_sucursal');
+            $table->double('existencias');
             $table->timestamps();
         });
     }

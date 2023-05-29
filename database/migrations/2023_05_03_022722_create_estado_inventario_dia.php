@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('codigo_producto');
             $table->string('clave_sucursal');
             $table->double('costo_articulo')->default(0);
-
+            $table->double('entradas');
+            $table->double('salidas');
 
             /*
             alter table `estado_inventario_dia` add column saldo DOUBLE AS (entradas - salidas);

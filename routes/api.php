@@ -39,6 +39,8 @@ use App\Http\Controllers\API\ConsultarPreciosController;
 use App\Http\Controllers\API\ConsultarProductosController;
 use App\Http\Controllers\API\EliminarProductoContenidoController;
 use App\Http\Controllers\API\GuardarProductoContenidoController;
+use App\Http\Controllers\API\ImportarTransformacionesController;
+use App\Http\Controllers\API\ImportarTransformacionesProductosController;
 use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
 use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
@@ -155,5 +157,8 @@ Route::middleware('auth:api')->group(function () {
         Route::post('sync_kardex_pendientes', [ImportarKardexPendienteController::class, 'Importar']);
         Route::post('sync_cortes_pendientes', [ImportarCortesPendientesController::class, 'Importar']);
         Route::post('sync_traslados_pendientes', [ImportarTrasladosController::class, 'Importar']);
+        Route::post('sync_transformations_pendientes', [ImportarTransformacionesProductosController::class, 'Importar']);
+
+        
     });
 });
