@@ -19,6 +19,7 @@ class TransaccionParser{
         $transaccion->fecha = $date;
 
         $transaccion->nombre_cliente = Prop::find('nombre_cliente', $arr, '');
+        $transaccion->codigo_cliente = Prop::find('codigo_cliente', $arr, '');
         $transaccion->total = Prop::find('total', $arr, 0);
         $transaccion->status = Prop::find('status', $arr, '');
         $transaccion->corte_mensual = Prop::find('corte_mensual', $arr, '');

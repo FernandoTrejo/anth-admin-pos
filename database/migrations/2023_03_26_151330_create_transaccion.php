@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('numero_transaccion')->default('');
             $table->dateTime('fecha');
             $table->string('nombre_cliente')->default('');
+            $table->string('codigo_cliente')->nullable();
             $table->double('total');
             $table->string('status');
             $table->string('corte_mensual')->default('');

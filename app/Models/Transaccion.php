@@ -16,6 +16,7 @@ class Transaccion extends Model
         'numero_transaccion',
         'fecha',
         'nombre_cliente',
+        'codigo_cliente',
         'total',
         'status',
         'corte_mensual',

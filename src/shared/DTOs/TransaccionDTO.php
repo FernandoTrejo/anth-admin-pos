@@ -8,6 +8,7 @@ class TransaccionDTO
     public $numero_transaccion;
     public $fecha;
     public $nombre_cliente;
+    public $codigo_cliente;
     public $total;
     public $status;
     public $corte_mensual;
@@ -37,6 +38,7 @@ class TransaccionDTO
             'numero_transaccion' => $this->numero_transaccion,
             'fecha' => $this->fecha,
             'nombre_cliente' => ($this->nombre_cliente) ? $this->nombre_cliente : '',
+            'codigo_cliente' => ($this->codigo_cliente) ? $this->codigo_cliente : '',
             'total' => $this->total,
             'status' => $this->status,
             'corte_mensual' => $this->corte_mensual,
