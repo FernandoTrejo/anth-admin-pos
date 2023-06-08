@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Ajustes\ConsultarInfoAjusteController;
 use App\Http\Controllers\API\Ajustes\EditarInfoAjusteController;
 use App\Http\Controllers\API\Ajustes\FinalizarAjusteController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
+use App\Http\Controllers\API\Anticipos\ConsultarAnticipoController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
 use App\Http\Controllers\API\Cajas\EditarInfoFacturaController;
@@ -117,6 +118,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('moviles/obtener_sucursal/{codigoSucursal}', [ConsultarVentasMovilesController::class, 'Consultar']);
         Route::post('moviles/importar', [ImportarVentaMovil::class, 'importar']);
         Route::post('moviles/cambiar_estado', [ActualizarEstadoVentaMovilController::class, 'CambiarEstado']);
+        // anticipos
+        Route::get('anticipos/buscar_numero/{numero}/{skip}/{take}', [ConsultarAnticipoController::class, 'ConsultarPorNumeroTransaccion']);
 
     });
 
