@@ -27,3 +27,4 @@ jobs:
         server: ${{ secrets.FTP_ADMIN_SERVER }}
         username: ${{ secrets.FTP_ADMIN_USERNAME}}
         password: ${{ secrets.FTP_ADMIN_PASSWORD}}
+        server_dir: "/"
