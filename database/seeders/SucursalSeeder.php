@@ -295,7 +295,7 @@ class SucursalSeeder extends Seeder
             $num1 = Numerador::create([
                 'tipo_documento' => TipoDocumentos::$FacturaConsumidorFinal,
                 'nombre' => 'Factura Consumidor Final',
-                'prefijo' => 'F0-',
+                'prefijo' => '',
                 'numeracion' => '0000000000000',
                 'inicio' => 1,
                 'fin' => 1000000000,
@@ -325,7 +325,7 @@ class SucursalSeeder extends Seeder
             $num4 = Numerador::create([
                 'tipo_documento'=> TipoDocumentos::$TicketDevolucion,
                 'nombre'=> 'Ticket Devolucion',
-                'prefijo'=> 'D-',
+                'prefijo'=> '',
                 'numeracion'=> '0000000000000',
                 'inicio'=> 1,
                 'fin'=> 1000000000,
@@ -335,7 +335,7 @@ class SucursalSeeder extends Seeder
             $num5 = Numerador::create([
                 'tipo_documento'=> TipoDocumentos::$TicketOtrosEgresos,
                 'nombre'=> 'Ticket Otros Egresos',
-                'prefijo'=> 'E-',
+                'prefijo'=> '',
                 'numeracion'=> '0000000000000',
                 'inicio'=> 1,
                 'fin'=> 1000000000,
@@ -345,7 +345,7 @@ class SucursalSeeder extends Seeder
             $num6 = Numerador::create([
                 'tipo_documento'=> TipoDocumentos::$TicketOtrosIngresos,
                 'nombre'=> 'Ticket Otros Ingresos',
-                'prefijo'=> 'I-',
+                'prefijo'=> '',
                 'numeracion'=> '0000000000000',
                 'inicio'=> 1,
                 'fin'=> 1000000000,
@@ -355,7 +355,7 @@ class SucursalSeeder extends Seeder
             $num7 = Numerador::create([
                 'tipo_documento'=> TipoDocumentos::$TicketAnticipos,
                 'nombre'=> 'Ticket Anticipos',
-                'prefijo'=> 'A-',
+                'prefijo'=> '',
                 'numeracion'=> '0000000000000',
                 'inicio'=> 1,
                 'fin'=> 1000000000,
@@ -365,7 +365,7 @@ class SucursalSeeder extends Seeder
             $num8 = Numerador::create([
                 'tipo_documento'=> TipoDocumentos::$Traslados,
                 'nombre'=> 'Traslados A Sucursales',
-                'prefijo'=> 'TS',
+                'prefijo'=> '',
                 'numeracion'=> '0000000000000',
                 'inicio'=> 1,
                 'fin'=> 1000000000,

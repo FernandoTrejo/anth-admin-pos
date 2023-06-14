@@ -15,6 +15,8 @@ use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
 use App\Http\Controllers\API\Cajas\EditarInfoFacturaController;
 use App\Http\Controllers\API\Cajas\EditarInfoTicketController;
 use App\Http\Controllers\API\CambiarEstadoTrasladoController;
+use App\Http\Controllers\API\Clientes\ConsultarClientesController;
+use App\Http\Controllers\API\Clientes\ImportarClientesController;
 use App\Http\Controllers\API\ConsultarDescuentosProductoController;
 use App\Http\Controllers\API\ConsultarInfoCajasController;
 use App\Http\Controllers\API\ConsultarInfoEmpresaController;
@@ -84,6 +86,12 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_enviados_desde/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
         Route::get('consultar_ultimos_enviados_hacia/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosHaciaMiSucursal']);
         Route::get('consultar_ultimos_modificados/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosModificados']);
+    });
+
+    // TRASLADOS
+    Route::prefix('clientes')->group(function () {
+        Route::post('importar', [ImportarClientesController::class, 'Importar']);
+        Route::get('consultar_todos', [ConsultarClientesController::class, 'Consultar']);
     });
 
     // INVENTARIO
