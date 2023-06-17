@@ -10,6 +10,7 @@ use App\Http\Controllers\API\Ajustes\EditarInfoAjusteController;
 use App\Http\Controllers\API\Ajustes\FinalizarAjusteController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
 use App\Http\Controllers\API\Anticipos\ConsultarAnticipoController;
+use App\Http\Controllers\API\Bodega\ConsultarEstadoBodegaController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
 use App\Http\Controllers\API\Cajas\EditarInfoFacturaController;
@@ -47,7 +48,7 @@ use App\Http\Controllers\API\ImportarTransformacionesProductosController;
 use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
 use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
-
+use App\Http\Controllers\API\Bodega\ConsultarUltimosRegistrosBodegaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -104,6 +105,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_precios_producto/{codigo_producto}', [ConsultarPreciosProductoController::class, 'Consultar']);
         Route::get('consultar_productos_contenidos/{codigo_producto}', [ConsultarProductosContenidosController::class, 'Consultar']);
         Route::get('consultar_descuentos_producto/{codigo_producto}', [ConsultarDescuentosProductoController::class, 'Consultar']);
+        Route::get('consultar_ultimas_existencias/{clave_sucursal}', [ConsultarUltimosRegistrosBodegaController::class, 'ConsultarPorCodigoSucursal']);
+        Route::post('consultar_estado_inventario', [ConsultarEstadoBodegaController::class, 'Consultar']);
         Route::post('productos_contenidos/guardar', [GuardarProductoContenidoController::class, 'Guardar']);
         Route::post('productos_contenidos/eliminar', [EliminarProductoContenidoController::class, 'Eliminar']);
 
