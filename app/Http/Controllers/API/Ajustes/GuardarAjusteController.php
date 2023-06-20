@@ -20,6 +20,7 @@ class GuardarAjusteController extends Controller
                 'codigo_sucursal' => $request['codigo_sucursal'],
                 'tipo' => $request['tipo'],
                 'usuario_id' => $user_id,
+                'etiqueta' => $request['etiqueta'],
             ]);
 
             $response =  new APIResponse(

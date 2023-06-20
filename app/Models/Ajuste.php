@@ -24,7 +24,8 @@ class Ajuste extends Model
         'codigo_usuario_autoriza',
         'fecha_autorizacion',
         'codigo_usuario_rechaza',
-        'fecha_denegado'
+        'fecha_denegado',
+        'etiqueta'
     ];
 
     public function productos() : HasMany{
