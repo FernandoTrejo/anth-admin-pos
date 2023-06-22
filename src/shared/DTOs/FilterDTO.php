@@ -6,4 +6,5 @@ class FilterDTO{
     public $value;
     public $type;
     public $operator;
+    public $key;
 }

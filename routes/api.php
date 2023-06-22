@@ -49,6 +49,8 @@ use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
 use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 use App\Http\Controllers\API\Bodega\ConsultarUltimosRegistrosBodegaController;
+use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -132,6 +134,9 @@ Route::middleware('auth:api')->group(function () {
         // anticipos
         Route::get('anticipos/buscar_numero/{numero}/{skip}/{take}', [ConsultarAnticipoController::class, 'ConsultarPorNumeroTransaccion']);
 
+
+        //deep search
+        Route::post('busqueda', [ConsultarTransaccionesController::class, 'ConsultarTransacciones']);
     });
 
     // Menu
