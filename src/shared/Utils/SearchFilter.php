@@ -10,17 +10,27 @@ class SearchFilter
     public static function apply($query, $filters = [], $sorters = [])
     {
         foreach ($filters as $key => $filter) {
+            $parts = explode('||', $filter->value);
+            
             switch ($filter->type) {
                 case FilterType::$Date:
                     $dateValue = DateParser::FromJSDateObject($filter->value);
                     $query->whereDate($filter->key, $filter->operator, $dateValue);
                     break;
                 case FilterType::$Numeric:
-                    $query->where($filter->key, $filter->operator, $filter->value);
+                    $query->where(function ($query) use ($parts, $filter) {
+                        foreach ($parts as $part) {
+                            $query->orWhere($filter->key, $filter->operator, $part);
+                        }
+                    });
                     break;
                 case FilterType::$Text:
-                    $query->where($filter->key, 'like', '%' . $filter->value . '%');
-                    break;
+                    $query->where(function ($query) use ($parts, $filter) {
+                        foreach ($parts as $part) {
+                            $query->orWhere($filter->key, $filter->operator, $part);
+                        }
+                    });
+                break;
             }
         }
 

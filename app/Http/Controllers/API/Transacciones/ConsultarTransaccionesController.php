@@ -57,7 +57,13 @@ class ConsultarTransaccionesController extends Controller
             $total = $query->count();
 
             $limiter = LimiterTransformer::transform($limiterRequest);
-            $transacciones = $query->skip($limiter->skip)->take($limiter->take)->get();
+            $transacciones = [];
+            if($limiter->take > 0){
+                $transacciones = $query->skip($limiter->skip)->take($limiter->take)->get();
+            }else{
+                $transacciones = $query->get();
+            }
+            
 
             $response =  new APIResponse(
                 200,
