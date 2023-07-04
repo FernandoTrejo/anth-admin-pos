@@ -16,7 +16,7 @@ class DateParser{
             return null;
         }
         $date = new DateTime();
-        $date->setTimestamp($timestamp / 1000);
+        $date->setTimestamp(($timestamp / 1000));
         return $date;
     }
 

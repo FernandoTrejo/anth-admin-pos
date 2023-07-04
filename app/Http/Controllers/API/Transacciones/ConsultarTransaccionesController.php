@@ -53,7 +53,6 @@ class ConsultarTransaccionesController extends Controller
                 SorterTransformer::transform($sortersRequest)
             );
             
-            
             $total = $query->count();
 
             $limiter = LimiterTransformer::transform($limiterRequest);
