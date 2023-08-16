@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UsuarioPosRolPermiso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Src\shared\APIResponse;
@@ -20,10 +21,16 @@ class LoginController extends Controller
             ]);
 
             if (Auth::attempt($credentials)) {
-                $user = User::where('username', $credentials['username'])->with('permissions')->first();
+                $user = User::where('username', $credentials['username'])->with('permissions')->with('roles')->first();
                 
+                $permissions = [];
+                foreach($user->roles as $rol){
+                    $permissions = array_merge($permissions, $rol->permissions()->get()->toArray());
+                }
+
                 $token = $user->createToken($user->name)->accessToken;
                 $datosUser = $user->toArray();
+                $datosUser['permissions'] = $permissions;
                 $datosUser['token'] = $token;
                 $responseOK = new APIResponse(200, true, 'Credenciales correctas', [
                     'user' => $datosUser

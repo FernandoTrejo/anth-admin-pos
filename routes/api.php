@@ -10,6 +10,7 @@ use App\Http\Controllers\API\Ajustes\EditarInfoAjusteController;
 use App\Http\Controllers\API\Ajustes\FinalizarAjusteController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
 use App\Http\Controllers\API\Anticipos\ConsultarAnticipoController;
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\Bodega\ConsultarEstadoBodegaController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
@@ -62,7 +63,7 @@ use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 |
 */
 
-
+Route::post('/register', [AuthController::class, 'register'])->name('register-user');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login-attempt');
 
 
