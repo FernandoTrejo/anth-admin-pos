@@ -50,6 +50,8 @@ use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
 use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 use App\Http\Controllers\API\Bodega\ConsultarUltimosRegistrosBodegaController;
+use App\Http\Controllers\API\Productos\EditarProductoController;
+use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 
 /*
@@ -112,8 +114,9 @@ Route::middleware('auth:api')->group(function () {
         Route::post('consultar_estado_inventario', [ConsultarEstadoBodegaController::class, 'Consultar']);
         Route::post('productos_contenidos/guardar', [GuardarProductoContenidoController::class, 'Guardar']);
         Route::post('productos_contenidos/eliminar', [EliminarProductoContenidoController::class, 'Eliminar']);
+        Route::post('productos/guardar', [GuardarNuevoProductoController::class, 'Guardar']);
+        Route::post('productos/editar', [EditarProductoController::class, 'Guardar']);
 
-        
     });
 
     Route::prefix('ajustes')->group(function () {
