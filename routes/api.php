@@ -50,6 +50,7 @@ use App\Http\Controllers\API\movil\ConsultarVentasMovilesController;
 use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 use App\Http\Controllers\API\Bodega\ConsultarUltimosRegistrosBodegaController;
+use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
@@ -111,6 +112,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_productos_contenidos/{codigo_producto}', [ConsultarProductosContenidosController::class, 'Consultar']);
         Route::get('consultar_descuentos_producto/{codigo_producto}', [ConsultarDescuentosProductoController::class, 'Consultar']);
         Route::get('consultar_ultimas_existencias/{clave_sucursal}', [ConsultarUltimosRegistrosBodegaController::class, 'ConsultarPorCodigoSucursal']);
+        Route::get('productos/combos/{skip}/{take}', [ConsultarCombosController::class, 'Consultar']);
         Route::post('consultar_estado_inventario', [ConsultarEstadoBodegaController::class, 'Consultar']);
         Route::post('productos_contenidos/guardar', [GuardarProductoContenidoController::class, 'Guardar']);
         Route::post('productos_contenidos/eliminar', [EliminarProductoContenidoController::class, 'Eliminar']);
