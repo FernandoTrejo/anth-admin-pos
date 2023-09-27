@@ -55,6 +55,7 @@ use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
+use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,7 @@ Route::middleware('auth:api')->group(function () {
         // Route::post('crear', [TrasladoController::class, 'CrearNuevo']);
         Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
         Route::post('rechazar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
+        Route::post('busqueda', [BuscarTrasladosController::class, 'Consultar']);
         Route::get('consultar_todos', [ConsultarTrasladosController::class, 'ConsultarTodos']);
         Route::get('consultar_enviados_hacia/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
         Route::get('consultar_enviados_desde/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
