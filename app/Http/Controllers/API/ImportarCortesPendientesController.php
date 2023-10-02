@@ -45,7 +45,7 @@ class ImportarCortesPendientesController extends Controller
                         continue;
                     }
                 }else{
-                    if(!$this->ActualizarInfoTransaccion($corteDTO)){
+                    if(!$this->ActualizarInfoCorte($corteDTO)){
                         continue;
                     }
                 }
