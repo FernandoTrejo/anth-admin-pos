@@ -8,6 +8,7 @@ use Src\shared\PropertyFinder as Prop;
 class PagoParser{
     public static function parse($arr) : PagoDTO{
         $pago = new PagoDTO();
+        $pago->vuelto = Prop::find('vuelto', $arr, 0);
         $pago->tipo_pago = Prop::find('tipo_pago', $arr, '');
         $pago->emisor = Prop::find('emisor', $arr, '');
         $pago->recibido = Prop::find('recibido', $arr, 0);

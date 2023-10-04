@@ -36,7 +36,7 @@ class TransaccionParser{
         $transaccion->tipo_transaccion = Prop::find('tipo_transaccion', $arr, '');
         $transaccion->descuento_total = Prop::find('descuento_total', $arr, 0);
         $transaccion->caja_id = Prop::find('caja_id', $arr, 0);
-        $transaccion->iva = Prop::find('iva', $arr, 0);
+        $transaccion->iva = Prop::find('iva', $arr, 13);
         
         $transaccion->pagos = Prop::find('pagos', $arr, []);
         $transaccion->productos_orden = Prop::find('productos_orden', $arr, []);
