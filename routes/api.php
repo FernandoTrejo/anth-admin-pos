@@ -11,6 +11,7 @@ use App\Http\Controllers\API\Ajustes\FinalizarAjusteController;
 use App\Http\Controllers\API\Ajustes\GuardarAjusteController;
 use App\Http\Controllers\API\Anticipos\ConsultarAnticipoController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\Bodega\ConsultarBodegaTiempoRealController;
 use App\Http\Controllers\API\Bodega\ConsultarEstadoBodegaController;
 use App\Http\Controllers\API\Cajas\ConsultarCajaController;
 use App\Http\Controllers\API\Cajas\EditarInfoCreditoFiscalController;
@@ -118,6 +119,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_ultimas_existencias/{clave_sucursal}', [ConsultarUltimosRegistrosBodegaController::class, 'ConsultarPorCodigoSucursal']);
         Route::post('filtrar_registros_bodega', [FiltrarRegistrosBodegaController::class, 'ConsultarPorCodigoSucursal']);
         
+        Route::get('bodega_tiempo_real/{claveSucursal}', [ConsultarBodegaTiempoRealController::class, 'Consultar']);
         Route::get('productos/combos/{skip}/{take}', [ConsultarCombosController::class, 'Consultar']);
         Route::post('productos/busqueda', [BuscarProductosController::class, 'Consultar']);
         Route::post('consultar_estado_inventario', [ConsultarEstadoBodegaController::class, 'Consultar']);
