@@ -11,7 +11,8 @@ class ConsultarBodegaTiempoRealController extends Controller
 {
     public function Consultar($claveSucursal){
         try {
-            $bodega = DB::select("CALL GetRealTimeInventory(?)", [$claveSucursal]);
+            $fecha_actual = date('Y-m-d');
+            $bodega = DB::select("CALL GetRealTimeInventory(?,?)", [$claveSucursal, $fecha_actual]);
             $response = new APIResponse(200, true, 'OK', [
                 'total' => count($bodega),
                 'bodega' => $bodega
