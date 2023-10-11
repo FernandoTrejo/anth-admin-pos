@@ -9,9 +9,9 @@ use Src\shared\APIResponse;
 
 class ConsultarKardexProductoSucursalController extends Controller
 {
-    public function Consultar($codigoProducto, $claveSucursal){
+    public function Consultar($codigoProducto, $claveSucursal, $masRecientes){
         try {
-            $kardex = DB::select("CALL x_SeleccionarKardexPorProductoYSucursal(?,?)", [$codigoProducto, $claveSucursal]);
+            $kardex = DB::select("CALL x_SeleccionarKardexPorProductoYSucursal(?,?, ?)", [$codigoProducto, $claveSucursal, $masRecientes]);
             $response = new APIResponse(200, true, 'OK', [
                 'total' => count($kardex),
                 'kardex' => $kardex

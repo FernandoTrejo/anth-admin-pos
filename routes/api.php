@@ -188,7 +188,7 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::prefix('kardex')->group(function () {
-        Route::get('consultar_producto_sucursal/{codigoProducto}/{claveSucursal}', [ConsultarKardexProductoSucursalController::class, 'Consultar']);
+        Route::get('consultar_producto_sucursal/{codigoProducto}/{claveSucursal}/{masRecientes}', [ConsultarKardexProductoSucursalController::class, 'Consultar']);
  
     });
 
