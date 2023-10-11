@@ -52,6 +52,7 @@ use App\Http\Controllers\API\movil\ImportarVentaMovil;
 use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 use App\Http\Controllers\API\Bodega\ConsultarUltimosRegistrosBodegaController;
 use App\Http\Controllers\API\Bodega\FiltrarRegistrosBodegaController;
+use App\Http\Controllers\API\Kardex\ConsultarKardexProductoSucursalController;
 use App\Http\Controllers\API\Productos\BuscarProductosController;
 use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
@@ -184,6 +185,11 @@ Route::middleware('auth:api')->group(function () {
     //vendedores
     Route::prefix('vendedores')->group(function () {
         Route::get('consultar_todos', [ConsultarVendedoresController::class, 'ConsultarTodos']);
+    });
+
+    Route::prefix('kardex')->group(function () {
+        Route::get('consultar_producto_sucursal/{codigoProducto}/{claveSucursal}', [ConsultarKardexProductoSucursalController::class, 'Consultar']);
+ 
     });
 
     Route::prefix('sync_server')->group(function () {
