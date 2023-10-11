@@ -57,6 +57,8 @@ use App\Http\Controllers\API\Productos\BuscarProductosController;
 use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
+use App\Http\Controllers\API\Reportes\VentaDiariaController;
+use App\Http\Controllers\API\Reportes\VentaDiariaProductoSucursalController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
 
@@ -185,6 +187,11 @@ Route::middleware('auth:api')->group(function () {
     //vendedores
     Route::prefix('vendedores')->group(function () {
         Route::get('consultar_todos', [ConsultarVendedoresController::class, 'ConsultarTodos']);
+    });
+
+    Route::prefix('reportes')->group(function () {
+        Route::post('ventas/diarias', [VentaDiariaController::class, 'Consultar']);
+        Route::post('ventas/xproducto', [VentaDiariaProductoSucursalController::class, 'Consultar']);
     });
 
     Route::prefix('kardex')->group(function () {
