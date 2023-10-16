@@ -127,7 +127,7 @@ class ConsultarTrasladosController extends Controller
     public function ConsultarUltimosTrasladosModificados($claveCentroCosto){
         try {
             $traslados = [];
-            $firstDate = Carbon::now()->subDays(5);
+            $firstDate = Carbon::now()->subDays(3);
             $tomorrow = Carbon::tomorrow();
             $trasladosRecibidos = Traslado::where('centro_costo_destino', $claveCentroCosto)->whereBetween('updated_at', [$firstDate, $tomorrow])->with('productos')->get()->toArray();
             $trasladosEnviados = Traslado::where('centro_costo_origen', $claveCentroCosto)->whereBetween('updated_at', [$firstDate, $tomorrow])->with('productos')->get()->toArray();
