@@ -22,7 +22,8 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
-        'codigo_empresa'
+        'codigo_empresa',
+        'is_super_admin'
     ];
 
     /**
