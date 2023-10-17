@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Src\shared\APIResponse;
 use Src\shared\DTOs\ProductoContenidoDTO;
 use Src\shared\Parsers\ProductoContenidoParser;
+use Src\shared\Proveedores;
 use Src\shared\SiNoStatus;
 
 class GuardarProductoContenidoController extends Controller
@@ -24,7 +25,8 @@ class GuardarProductoContenidoController extends Controller
             $itemCreado = ProductoContenido::create($productoDTO->toArray());
             Producto::where('id', $productoDTO->producto_id)->update(
                 [
-                    'contiene_productos' => SiNoStatus::$Si
+                    'contiene_productos' => SiNoStatus::$Si,
+                    'proveedor' => Proveedores::$combos
                 ]
             );
 
