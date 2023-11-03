@@ -53,14 +53,19 @@ use App\Http\Controllers\API\RegistrarNuevoUsuarioCajaController;
 use App\Http\Controllers\API\Bodega\ConsultarUltimosRegistrosBodegaController;
 use App\Http\Controllers\API\Bodega\FiltrarRegistrosBodegaController;
 use App\Http\Controllers\API\Kardex\ConsultarKardexProductoSucursalController;
+use App\Http\Controllers\API\Menu\AgregarItemMenuController;
+use App\Http\Controllers\API\Menu\ConsultarMenuActivoController;
+use App\Http\Controllers\API\Menu\EliminarItemMenuController;
 use App\Http\Controllers\API\Productos\BuscarProductosController;
 use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
 use App\Http\Controllers\API\Reportes\VentaDiariaController;
 use App\Http\Controllers\API\Reportes\VentaDiariaProductoSucursalController;
+use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
+use App\Http\Controllers\API\Traslados\ConsultarDetallesTrasladosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +106,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_enviados_desde/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
         Route::get('consultar_ultimos_enviados_hacia/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosHaciaMiSucursal']);
         Route::get('consultar_ultimos_modificados/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosModificados']);
+        Route::get('consultar_detalles/{codigo}', [ConsultarDetallesTrasladosController::class, 'Consultar']);
     });
 
     // TRASLADOS
@@ -152,9 +158,10 @@ Route::middleware('auth:api')->group(function () {
         // anticipos
         Route::get('anticipos/buscar_numero/{numero}/{skip}/{take}', [ConsultarAnticipoController::class, 'ConsultarPorNumeroTransaccion']);
 
-
         //deep search
         Route::post('busqueda', [ConsultarTransaccionesController::class, 'ConsultarTransacciones']);
+
+        Route::get('consultar_detalles/{codigo}', [ConsultarDetallesTransaccionController::class, 'Consultar']);
     });
 
     // Menu
@@ -162,6 +169,10 @@ Route::middleware('auth:api')->group(function () {
         Route::get('categorias_productos', [ConsultarMenuProductosController::class, 'Consultar']);
         Route::get('categorias', [ConsultarMenuController::class, 'Consultar']);
         Route::get('precios', [ConsultarPreciosController::class, 'Consultar']);
+        
+        Route::get('consultar_productos_menu', [ConsultarMenuActivoController::class, 'Consultar']);
+        Route::post('agregar_menu_item', [AgregarItemMenuController::class, 'Agregar']);
+        Route::post('eliminar_menu_item', [EliminarItemMenuController::class, 'Eliminar']);
     });
 
     // Usuarios
