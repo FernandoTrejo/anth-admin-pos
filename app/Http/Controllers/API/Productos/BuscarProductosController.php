@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Src\shared\APIResponse;
+use Src\shared\Proveedores;
 
 class BuscarProductosController extends Controller
 {
@@ -21,11 +22,11 @@ class BuscarProductosController extends Controller
             $field = $datos['field'];
 
             $inventario = [];
-            $count = Producto::where($field, 'like', "%$search%")->count();
+            $count = Producto::where($field, 'like', "%$search%")->whereIn('proveedor', Proveedores::getAll())->count();
             if ($take > 0) {
-                $inventario = Producto::where($field, 'like', "%$search%")->skip($skip)->take($take)->get()->toArray();
+                $inventario = Producto::where($field, 'like', "%$search%")->whereIn('proveedor', Proveedores::getAll())->skip($skip)->take($take)->get()->toArray();
             } else {
-                $inventario = Producto::where($field, 'like', "%$search%")->get()->toArray();
+                $inventario = Producto::where($field, 'like', "%$search%")->whereIn('proveedor', Proveedores::getAll())->get()->toArray();
             }
 
             $response =  new APIResponse(
