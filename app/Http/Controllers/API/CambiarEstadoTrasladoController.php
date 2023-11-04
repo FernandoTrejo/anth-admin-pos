@@ -85,7 +85,7 @@ class CambiarEstadoTrasladoController extends Controller
             }
         }
         if ($accion == $this->finalizado) {
-            if ($traslado->status === $this->cancelado) {
+            if ($traslado->status === $this->cancelado || $traslado->status === $this->finalizado) {
                 throw new Exception('El traslado ya no esta disponible');
             }
         }
