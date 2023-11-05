@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use App\Models\Traslado;
 use App\Models\TrasladoProducto;
+use App\Models\UsuarioPOS;
 use Illuminate\Http\Request;
 use Src\shared\APIResponse;
 
@@ -25,6 +26,20 @@ class ConsultarDetallesTrasladosController extends Controller
                 return response()->json($response->toArray());
             }
 
+            $usuarios = [];
+            if($traslado->codigo_usuario_envia){
+                $usuarioEnvia = UsuarioPOS::where('codigo', $traslado->codigo_usuario_envia);
+                $usuarios['nombre_usuario_envia'] = (!$usuarioEnvia) ? '' : $usuarioEnvia->nombre_empleado;
+            }
+            if($traslado->codigo_usuario_recibe){
+                $usuarioRecibe = UsuarioPOS::where('codigo', $traslado->codigo_usuario_recibe);
+                $usuarios['nombre_usuario_recibe'] = (!$usuarioRecibe) ? '' : $usuarioRecibe->nombre_empleado;
+            }
+            if($traslado->codigo_usuario_rechaza){
+                $usuarioRechaza = UsuarioPOS::where('codigo', $traslado->codigo_usuario_rechaza);
+                $usuarios['nombre_usuario_rechaza'] = (!$usuarioRechaza) ? '' : $usuarioRechaza->nombre_empleado;
+            }
+
             $productos = TrasladoProducto::where('traslado_id', $traslado->id)->get();
             $productosArr = array_map(function($item){
                 $prod = Producto::where('codigo', $item['codigo_producto'])->first();
@@ -37,7 +52,7 @@ class ConsultarDetallesTrasladosController extends Controller
                 true,
                 "Detalles de transaccion",
                 [
-                    'traslado' => $traslado->toArray(),
+                    'traslado' => array_merge($traslado->toArray(), $usuarios),
                     'productos' => $productosArr
                 ]
             );
