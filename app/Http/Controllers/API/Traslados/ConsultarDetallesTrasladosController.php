@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Traslados;
 
 use App\Http\Controllers\Controller;
+use App\Models\Producto;
 use App\Models\Traslado;
 use App\Models\TrasladoProducto;
 use Illuminate\Http\Request;
@@ -25,14 +26,19 @@ class ConsultarDetallesTrasladosController extends Controller
             }
 
             $productos = TrasladoProducto::where('traslado_id', $traslado->id)->get();
-
+            $productosArr = array_map(function($item){
+                $prod = Producto::where('codigo', $item['codigo_producto'])->first();
+                $nombre = (!$prod) ? '' : $prod->nombre;
+                $item['nombre_producto'] = $nombre;
+                return $item;
+            }, $productos->toArray());
             $response =  new APIResponse(
                 200,
                 true,
                 "Detalles de transaccion",
                 [
                     'traslado' => $traslado->toArray(),
-                    'productos' => $productos->toArray()
+                    'productos' => $productosArr
                 ]
             );
 
