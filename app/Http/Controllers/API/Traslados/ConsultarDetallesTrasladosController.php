@@ -28,15 +28,15 @@ class ConsultarDetallesTrasladosController extends Controller
 
             $usuarios = [];
             if($traslado->codigo_usuario_envia){
-                $usuarioEnvia = UsuarioPOS::where('codigo', $traslado->codigo_usuario_envia);
+                $usuarioEnvia = UsuarioPOS::where('codigo', $traslado->codigo_usuario_envia)->first();
                 $usuarios['nombre_usuario_envia'] = (!$usuarioEnvia) ? '' : $usuarioEnvia->nombre_empleado;
             }
             if($traslado->codigo_usuario_recibe){
-                $usuarioRecibe = UsuarioPOS::where('codigo', $traslado->codigo_usuario_recibe);
+                $usuarioRecibe = UsuarioPOS::where('codigo', $traslado->codigo_usuario_recibe)->first();
                 $usuarios['nombre_usuario_recibe'] = (!$usuarioRecibe) ? '' : $usuarioRecibe->nombre_empleado;
             }
             if($traslado->codigo_usuario_rechaza){
-                $usuarioRechaza = UsuarioPOS::where('codigo', $traslado->codigo_usuario_rechaza);
+                $usuarioRechaza = UsuarioPOS::where('codigo', $traslado->codigo_usuario_rechaza)->first();
                 $usuarios['nombre_usuario_rechaza'] = (!$usuarioRechaza) ? '' : $usuarioRechaza->nombre_empleado;
             }
 
