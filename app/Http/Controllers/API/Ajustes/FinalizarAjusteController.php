@@ -51,6 +51,16 @@ class FinalizarAjusteController extends Controller
                 return response()->json($response->toArray());
             }
 
+            if($ajuste->status == StatusAjuste::$Closed || $ajuste->status == StatusAjuste::$Denied){
+                $response =  new APIResponse(
+                    500,
+                    false,
+                    "El ajuste ya no esta disponible",
+                    []
+                );
+                return response()->json($response->toArray());
+            }
+
             $registrosKardex = $this->PrepararRegistrosKardex($productosInsertar, $ajuste);
             $this->InsertarInformacion($productosInsertar, $registrosKardex, $ajuste);
 
