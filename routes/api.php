@@ -60,8 +60,11 @@ use App\Http\Controllers\API\Productos\BuscarProductosController;
 use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
+use App\Http\Controllers\API\Reportes\DetallePagosXSucursalController;
+use App\Http\Controllers\API\Reportes\DetalleProductosTicketXSucursalController;
 use App\Http\Controllers\API\Reportes\VentaDiariaController;
 use App\Http\Controllers\API\Reportes\VentaDiariaProductoSucursalController;
+use App\Http\Controllers\API\Reportes\VentasXHoraXSucursalController;
 use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
@@ -201,6 +204,9 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::prefix('reportes')->group(function () {
+        Route::post('detalle_productos_ticket', [DetalleProductosTicketXSucursalController::class, 'Consultar']);
+        Route::post('detalle_pagos_ticket', [DetallePagosXSucursalController::class, 'Consultar']);
+        Route::post('ventas/xhora', [VentasXHoraXSucursalController::class, 'Consultar']);
         Route::post('ventas/diarias', [VentaDiariaController::class, 'Consultar']);
         Route::post('ventas/xproducto', [VentaDiariaProductoSucursalController::class, 'Consultar']);
     });
