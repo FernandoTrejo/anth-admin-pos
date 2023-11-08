@@ -90,6 +90,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function () {
+    Route::post('change-password', [AuthController::class, 'changePassword'])->name('change-user-password');
     Route::get('empresa-info', [ConsultarInfoEmpresaController::class, 'Consultar']);
 
     // USUARIOS
