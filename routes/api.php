@@ -69,6 +69,13 @@ use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionControlle
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
 use App\Http\Controllers\API\Traslados\ConsultarDetallesTrasladosController;
+use App\Http\Controllers\API\Usuarios\AdminPOS\AsignarRolController;
+use App\Http\Controllers\API\Usuarios\AdminPOS\ConsultarUsuariosController;
+use App\Http\Controllers\API\Usuarios\POS\ActivarUsuarioPOSController;
+use App\Http\Controllers\API\Usuarios\POS\AgregarNuevoUsuarioPOSController;
+use App\Http\Controllers\API\Usuarios\POS\AsignarRolPOSController;
+use App\Http\Controllers\API\Usuarios\POS\ConsultarUsuariosPOSController as POSConsultarUsuariosPOSController;
+use App\Http\Controllers\API\Usuarios\POS\DesactivarUsuarioPOSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -182,6 +189,13 @@ Route::middleware('auth:api')->group(function () {
     // Usuarios
     Route::prefix('usuarios')->group(function () {
         Route::get('consultar_usuarios', [ConsultarUsuariosPOSController::class, 'Consultar']);
+        Route::get('adminpos', [ConsultarUsuariosController::class, 'Consultar']);
+        Route::post('adminpos/asignar_rol', [AsignarRolController::class, 'Asignar']);
+        Route::get('pos', [POSConsultarUsuariosPOSController::class, 'Consultar']);
+        Route::get('pos/asignar_rol', [AsignarRolPOSController::class, 'Asignar']);
+        Route::get('pos/agregar', [AgregarNuevoUsuarioPOSController::class, 'Agregar']);
+        Route::get('pos/activar', [ActivarUsuarioPOSController::class, 'Activar']);
+        Route::get('pos/desactivar', [DesactivarUsuarioPOSController::class, 'Desactivar']);
     });
 
     // Sucursales
