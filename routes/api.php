@@ -131,6 +131,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_inventario_activo/{skip}/{take}', [ConsultarInventarioController::class, 'ConsultarInventarioActivo']);
         Route::get('consultar_inventario_activo/cantidad', [ConsultarInventarioController::class, 'CantidadInventarioActivo']);
         Route::get('consultar_productos_general', [ConsultarProductosController::class, 'Consultar']);
+        Route::get('consultar_productos_todos', [ConsultarProductosController::class, 'ConsultarTodos']);
         Route::get('consultar_productos_ult_mod', [ConsultarProductosController::class, 'UltimosModificados']);
         Route::get('consultar_informacion_producto/{codigo_producto}', [ConsultarInfoProductoController::class, 'Consultar']);
         Route::get('consultar_precios_producto/{codigo_producto}', [ConsultarPreciosProductoController::class, 'Consultar']);
