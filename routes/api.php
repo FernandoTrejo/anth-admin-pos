@@ -76,6 +76,7 @@ use App\Http\Controllers\API\Usuarios\POS\AgregarNuevoUsuarioPOSController;
 use App\Http\Controllers\API\Usuarios\POS\AsignarRolPOSController;
 use App\Http\Controllers\API\Usuarios\POS\ConsultarUsuariosPOSController as POSConsultarUsuariosPOSController;
 use App\Http\Controllers\API\Usuarios\POS\DesactivarUsuarioPOSController;
+use App\Http\Controllers\API\Usuarios\POS\EditarDatosUsuarioPosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -197,6 +198,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('pos/agregar', [AgregarNuevoUsuarioPOSController::class, 'Agregar']);
         Route::get('pos/activar', [ActivarUsuarioPOSController::class, 'Activar']);
         Route::get('pos/desactivar', [DesactivarUsuarioPOSController::class, 'Desactivar']);
+        Route::get('pos/editar', [EditarDatosUsuarioPosController::class, 'Editar']);
+
     });
 
     // Sucursales
