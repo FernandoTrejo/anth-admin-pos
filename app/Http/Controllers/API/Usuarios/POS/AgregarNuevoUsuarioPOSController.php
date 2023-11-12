@@ -21,7 +21,7 @@ class AgregarNuevoUsuarioPOSController extends Controller
             $clave = trim($request->input('clave'));
             $nombre_empleado = trim($request->input('nombre_empleado'));
             $url_imagen = 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png';
-            $status = 'activo';
+            $status = $request->input('status');
 
             // 'tipo_empleado'
             $rol = RolUsuarioPOS::find($rolID);
