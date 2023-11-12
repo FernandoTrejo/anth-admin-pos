@@ -194,7 +194,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('adminpos', [ConsultarUsuariosController::class, 'Consultar']);
         Route::post('adminpos/asignar_rol', [AsignarRolController::class, 'Asignar']);
         Route::get('pos', [POSConsultarUsuariosPOSController::class, 'Consultar']);
-        Route::get('pos/asignar_rol', [AsignarRolPOSController::class, 'Asignar']);
+        Route::post('pos/asignar_rol', [AsignarRolPOSController::class, 'Asignar']);
         Route::post('pos/agregar', [AgregarNuevoUsuarioPOSController::class, 'Agregar']);
         Route::get('pos/activar', [ActivarUsuarioPOSController::class, 'Activar']);
         Route::get('pos/desactivar', [DesactivarUsuarioPOSController::class, 'Desactivar']);
