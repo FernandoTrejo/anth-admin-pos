@@ -7,6 +7,7 @@ use App\Models\RolUsuarioPOS;
 use App\Models\User;
 use App\Models\UsuarioRolAsignado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Src\shared\APIResponse;
 
 class AsignarRolController extends Controller
@@ -41,20 +42,16 @@ class AsignarRolController extends Controller
                 return response()->json($response->toArray());
             }
 
-            $registro = UsuarioRolAsignado::create([
-                'rol_id' => $rolID,
-                'usuario_id' => $userID
-            ]);
+            DB::transaction(function() use ($user, $rol){
+                UsuarioRolAsignado::where('usuario_pos_id', $user->id)->delete();
+                $registro = UsuarioRolAsignado::create([
+                    'rol_id' => $rol->id,
+                    'usuario_id' => $user->id
+                ]);
 
-            if (!$registro) {
-                $response =  new APIResponse(
-                    404,
-                    false,
-                    "Error, la informacion no se pudo guardar",
-                    []
-                );
-                return response()->json($response->toArray());
-            }
+                $user->tipo_empleado = $rol->titulo;
+                $user->save();
+            });
 
             $response =  new APIResponse(
                 200,

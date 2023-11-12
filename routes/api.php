@@ -71,6 +71,7 @@ use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
 use App\Http\Controllers\API\Traslados\ConsultarDetallesTrasladosController;
 use App\Http\Controllers\API\Usuarios\AdminPOS\AsignarRolController;
 use App\Http\Controllers\API\Usuarios\AdminPOS\ConsultarUsuariosController;
+use App\Http\Controllers\API\Usuarios\AdminPOS\EditarDatosUsuarioAdminPosController;
 use App\Http\Controllers\API\Usuarios\POS\ActivarUsuarioPOSController;
 use App\Http\Controllers\API\Usuarios\POS\AgregarNuevoUsuarioPOSController;
 use App\Http\Controllers\API\Usuarios\POS\AsignarRolPOSController;
@@ -193,6 +194,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_usuarios', [ConsultarUsuariosPOSController::class, 'Consultar']);
         Route::get('adminpos', [ConsultarUsuariosController::class, 'Consultar']);
         Route::post('adminpos/asignar_rol', [AsignarRolController::class, 'Asignar']);
+        Route::post('adminpos/editar', [EditarDatosUsuarioAdminPosController::class, 'Editar']);
         Route::get('pos', [POSConsultarUsuariosPOSController::class, 'Consultar']);
         Route::post('pos/asignar_rol', [AsignarRolPOSController::class, 'Asignar']);
         Route::post('pos/agregar', [AgregarNuevoUsuarioPOSController::class, 'Agregar']);
