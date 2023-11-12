@@ -48,8 +48,6 @@ class AsignarRolController extends Controller
                     'rol_id' => $rol->id,
                     'usuario_id' => $user->id
                 ]);
-
-                $user->tipo_empleado = $rol->titulo;
                 $user->save();
             });
 
