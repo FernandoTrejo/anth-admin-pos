@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\RolUsuarioPOS;
 use App\Models\User;
+use App\Models\UsuarioRolAsignado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Src\shared\APIResponse;
 
@@ -17,6 +20,28 @@ class AuthController extends Controller
             $name = $data['name'];
             $username = $data['username'];
             $password = $data['password'];
+            $rolID = $request->input('rol_id');
+            $rol = RolUsuarioPOS::find($rolID);
+            if (!$rol) {
+                $response =  new APIResponse(
+                    404,
+                    false,
+                    "Error, el rol especificado no existe",
+                    []
+                );
+                return response()->json($response->toArray());
+            }
+
+            $user = User::where('username', $username)->first();
+            if ($user) {
+                $response =  new APIResponse(
+                    404,
+                    false,
+                    "Error, el usuario ya existe",
+                    []
+                );
+                return response()->json($response->toArray());
+            }
 
             $usuario = User::create(
                 [
@@ -37,6 +62,14 @@ class AuthController extends Controller
     
                 return response()->json($response->toArray());
             }
+
+            DB::transaction(function() use ($usuario, $rol){
+                UsuarioRolAsignado::where('usuario_id', $usuario->id)->delete();
+                $registro = UsuarioRolAsignado::create([
+                    'rol_id' => $rol->id,
+                    'usuario_id' => $usuario->id
+                ]);
+            });
 
             $response =  new APIResponse(
                 200,

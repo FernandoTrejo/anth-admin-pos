@@ -48,7 +48,6 @@ class AsignarRolController extends Controller
                     'rol_id' => $rol->id,
                     'usuario_id' => $user->id
                 ]);
-                $user->save();
             });
 
             $response =  new APIResponse(
