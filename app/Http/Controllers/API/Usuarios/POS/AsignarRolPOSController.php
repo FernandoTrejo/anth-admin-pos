@@ -43,6 +43,7 @@ class AsignarRolPOSController extends Controller
 
 
             DB::transaction(function() use ($user, $rol){
+                UsuarioPosRolAsignado::where('usuario_pos_id', $user->id)->delete();
                 $registro = UsuarioPosRolAsignado::create([
                     'rol_id' => $rol->id,
                     'usuario_pos_id' => $user->id
