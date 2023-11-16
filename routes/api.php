@@ -62,8 +62,11 @@ use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
 use App\Http\Controllers\API\Reportes\DetallePagosXSucursalController;
 use App\Http\Controllers\API\Reportes\DetalleProductosTicketXSucursalController;
+use App\Http\Controllers\API\Reportes\TopProductosGlobalController;
+use App\Http\Controllers\API\Reportes\TopProductosXSucursalController;
 use App\Http\Controllers\API\Reportes\VentaDiariaController;
 use App\Http\Controllers\API\Reportes\VentaDiariaProductoSucursalController;
+use App\Http\Controllers\API\Reportes\VentasRangoProductosController;
 use App\Http\Controllers\API\Reportes\VentasXHoraXSucursalController;
 use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
@@ -230,6 +233,9 @@ Route::middleware('auth:api')->group(function () {
         Route::post('ventas/xhora', [VentasXHoraXSucursalController::class, 'Consultar']);
         Route::post('ventas/diarias', [VentaDiariaController::class, 'Consultar']);
         Route::post('ventas/xproducto', [VentaDiariaProductoSucursalController::class, 'Consultar']);
+        Route::post('ventas/rango_producto', [VentasRangoProductosController::class, 'Consultar']);
+        Route::post('ventas/top_x_sucursal', [TopProductosXSucursalController::class, 'Consultar']);
+        Route::post('ventas/top_global', [TopProductosGlobalController::class, 'Consultar']);
     });
 
     Route::prefix('kardex')->group(function () {
