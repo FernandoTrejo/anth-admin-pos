@@ -68,6 +68,7 @@ use App\Http\Controllers\API\Reportes\VentaDiariaController;
 use App\Http\Controllers\API\Reportes\VentaDiariaProductoSucursalController;
 use App\Http\Controllers\API\Reportes\VentasRangoProductosController;
 use App\Http\Controllers\API\Reportes\VentasXHoraXSucursalController;
+use App\Http\Controllers\API\Reportes\VentasXLineasProductosController;
 use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
@@ -236,6 +237,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('ventas/rango_producto', [VentasRangoProductosController::class, 'Consultar']);
         Route::post('ventas/top_x_sucursal', [TopProductosXSucursalController::class, 'Consultar']);
         Route::post('ventas/top_global', [TopProductosGlobalController::class, 'Consultar']);
+        Route::post('ventas/x_linea_producto', [VentasXLineasProductosController::class, 'Consultar']);
     });
 
     Route::prefix('kardex')->group(function () {
