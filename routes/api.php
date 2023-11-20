@@ -119,7 +119,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
         Route::post('rechazar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
         Route::post('busqueda', [BuscarTrasladosController::class, 'Consultar']);
-        Route::post('marcar_despercicio', [MarcarDesperdicioController::class, 'Marcar']);
+        Route::post('marcar_desperdicio', [MarcarDesperdicioController::class, 'Marcar']);
         Route::get('consultar_todos', [ConsultarTrasladosController::class, 'ConsultarTodos']);
         Route::get('consultar_enviados_hacia/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
         Route::get('consultar_enviados_desde/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
