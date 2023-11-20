@@ -73,6 +73,7 @@ use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionControlle
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
 use App\Http\Controllers\API\Traslados\ConsultarDetallesTrasladosController;
+use App\Http\Controllers\API\Traslados\MarcarDesperdicioController;
 use App\Http\Controllers\API\Usuarios\AdminPOS\AsignarRolController;
 use App\Http\Controllers\API\Usuarios\AdminPOS\ConsultarUsuariosController;
 use App\Http\Controllers\API\Usuarios\AdminPOS\EditarDatosUsuarioAdminPosController;
@@ -118,6 +119,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('finalizar', [CambiarEstadoTrasladoController::class, 'Finalizar']);
         Route::post('rechazar', [CambiarEstadoTrasladoController::class, 'Cancelar']);
         Route::post('busqueda', [BuscarTrasladosController::class, 'Consultar']);
+        Route::post('marcar_despercicio', [MarcarDesperdicioController::class, 'Marcar']);
         Route::get('consultar_todos', [ConsultarTrasladosController::class, 'ConsultarTodos']);
         Route::get('consultar_enviados_hacia/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);
         Route::get('consultar_enviados_desde/{claveCentroCosto}/{estado}', [ConsultarTrasladosController::class, 'ConsultarTrasladosHaciaMiSucursal']);

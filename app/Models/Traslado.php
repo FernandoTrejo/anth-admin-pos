@@ -28,7 +28,8 @@ class Traslado extends Model
         'observaciones_envio',
         'observaciones_recepcion',
         'codigo_usuario_recibe',
-        'codigo_usuario_rechaza'
+        'codigo_usuario_rechaza',
+        'es_desperdicio',
     ];
 
     public function productos(): HasMany
