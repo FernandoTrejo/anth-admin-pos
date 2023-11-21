@@ -69,6 +69,10 @@ use App\Http\Controllers\API\Reportes\VentaDiariaProductoSucursalController;
 use App\Http\Controllers\API\Reportes\VentasRangoProductosController;
 use App\Http\Controllers\API\Reportes\VentasXHoraXSucursalController;
 use App\Http\Controllers\API\Reportes\VentasXLineasProductosController;
+use App\Http\Controllers\API\Solicitudes\BuscarSolicitudesController;
+use App\Http\Controllers\API\Solicitudes\CerrarSolicitudDesdeTiendaController;
+use App\Http\Controllers\API\Solicitudes\CrearNuevaSolicitudTiendaController;
+use App\Http\Controllers\API\Solicitudes\ModificarStatusSolicitudController;
 use App\Http\Controllers\API\Transacciones\ConsultarDetallesTransaccionController;
 use App\Http\Controllers\API\Transacciones\ConsultarTransaccionesController;
 use App\Http\Controllers\API\Traslados\BuscarTrasladosController;
@@ -126,6 +130,14 @@ Route::middleware('auth:api')->group(function () {
         Route::get('consultar_ultimos_enviados_hacia/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosHaciaMiSucursal']);
         Route::get('consultar_ultimos_modificados/{claveCentroCosto}', [ConsultarTrasladosController::class, 'ConsultarUltimosTrasladosModificados']);
         Route::get('consultar_detalles/{codigo}', [ConsultarDetallesTrasladosController::class, 'Consultar']);
+    });
+
+    Route::prefix('solicitudes_tiendas')->group(function () {
+        Route::post('crear', [CrearNuevaSolicitudTiendaController::class, 'Crear']);
+        Route::post('busqueda', [BuscarSolicitudesController::class, 'Consultar']);
+        Route::post('cerrar_solicitud', [CerrarSolicitudDesdeTiendaController::class, 'Cerrar']);
+        Route::post('modificar_status', [ModificarStatusSolicitudController::class, 'Editar']);
+        
     });
 
     // TRASLADOS
