@@ -45,6 +45,7 @@ class ConsultarTransaccionesController extends Controller
             $filtersRequest = $request->get('filters') ? $request->get('filters') : [];
             $sortersRequest = $request->get('sorters') ? $request->get('sorters') : [];
             $limiterRequest = $request->get('limiter');
+            $paymentTypeRequest = $request->get('payment_type');
 
             $query = Transaccion::query();
             $query = SearchFilter::apply(
@@ -52,10 +53,17 @@ class ConsultarTransaccionesController extends Controller
                 FilterTransformer::transform($this->filterKeys, $filtersRequest),
                 SorterTransformer::transform($sortersRequest)
             );
-            
+
+            if($paymentTypeRequest != ''){
+                $query = $query->join('transaccion_pagos', 'transaccion.codigo', '=', 'transaccion_pagos.codigo_orden')->where(function ($query) use ($paymentTypeRequest) {
+                    $query->where('transaccion_pagos.tipo_pago', $paymentTypeRequest);
+                });
+            }
+
             $total = $query->count();
 
             $limiter = LimiterTransformer::transform($limiterRequest);
+            
             $transacciones = [];
             if($limiter->take > 0){
                 $transacciones = $query->skip($limiter->skip)->take($limiter->take)->get();
