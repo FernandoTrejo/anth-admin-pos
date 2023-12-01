@@ -24,7 +24,8 @@ class BuscarTrasladosController extends Controller
             'codigo_origen' => FilterType::$Text,
             'codigo_destino' => FilterType::$Text,
             'referencia' => FilterType::$Text,
-            'status' => FilterType::$Text
+            'status' => FilterType::$Text,
+            'es_desperdicio' => FilterType::$Text
         ];
     }
 
