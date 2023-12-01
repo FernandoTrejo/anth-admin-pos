@@ -29,7 +29,7 @@ class MarcarDesperdicioController extends Controller
                 return response()->json($response->toArray());
             }
 
-            if($traslado->status != StatusTraslados::$Finalizado){
+            if($traslado->status == StatusTraslados::$Inicial){
                 $response =  new APIResponse(
                     404,
                     false,
