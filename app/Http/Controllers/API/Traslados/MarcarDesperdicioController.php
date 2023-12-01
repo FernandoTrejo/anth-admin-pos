@@ -29,7 +29,7 @@ class MarcarDesperdicioController extends Controller
                 return response()->json($response->toArray());
             }
 
-            if($traslado->status == StatusTraslados::$Inicial){
+            if($traslado->status === StatusTraslados::$Inicial){
                 $response =  new APIResponse(
                     404,
                     false,
@@ -41,12 +41,13 @@ class MarcarDesperdicioController extends Controller
             }
             
             $traslado->es_desperdicio = ($esDesperdicio == true) ? 'si' : 'no';
+            $message = ($esDesperdicio == true) ? 'Esta transaccion ha sido marcada como desperdicio' : 'Esta transaccion ha sido desmarcada';
 
             $traslado->save();
             $response =  new APIResponse(
                 200,
                 true,
-                "Esta transaccion ha sido marcada como desperdicio",
+                $message,
                 []
             );
 
