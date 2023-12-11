@@ -11,7 +11,7 @@ use Src\shared\APIResponse;
 class CerrarSolicitudDesdeTiendaController extends Controller
 {
 
-    private $limiteTiempoMinutos = 5;
+    private $limiteTiempoMinutos = 30;
     public function Cerrar(Request $request)
     {
         try {
