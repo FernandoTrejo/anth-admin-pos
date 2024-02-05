@@ -117,7 +117,7 @@ class FinalizarAjusteController extends Controller
                 'precio' => 0, //campo inservible
                 'precio_sin_descuento' => 0, //campo inservible
                 'tipo_movimiento' => $tipoMovimientoKardex,
-                'numero_documento' => $ajuste->numero,
+                'numero_documento' => $ajuste->id,
                 'status' => StatusActivo::$Activo,
                 'codigo_orden' => $ajuste->id, //id del ajuste
                 'centro_costo' => $sucursal->clave_centro_costo,
