@@ -87,6 +87,7 @@ use App\Http\Controllers\API\Usuarios\POS\AsignarRolPOSController;
 use App\Http\Controllers\API\Usuarios\POS\ConsultarUsuariosPOSController as POSConsultarUsuariosPOSController;
 use App\Http\Controllers\API\Usuarios\POS\DesactivarUsuarioPOSController;
 use App\Http\Controllers\API\Usuarios\POS\EditarDatosUsuarioPosController;
+use App\Http\Controllers\Temporal\ActualizarDatosFacturaElectronica;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,9 @@ use App\Http\Controllers\API\Usuarios\POS\EditarDatosUsuarioPosController;
 
 Route::post('/register', [AuthController::class, 'register'])->name('register-user');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login-attempt');
+
+//datos factura electronica
+Route::post('/datos_fe', [ActualizarDatosFacturaElectronica::class, 'Actualizar']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
