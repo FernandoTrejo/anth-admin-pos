@@ -25,5 +25,6 @@ class ClientesFE extends Model
         'responsable',
         'tipo_doc',
         'numero',
+        'tipo_contribuyente'
     ];
 }
