@@ -60,6 +60,7 @@ use App\Http\Controllers\API\Productos\BuscarProductosController;
 use App\Http\Controllers\API\Productos\ConsultarCombosController;
 use App\Http\Controllers\API\Productos\EditarProductoController;
 use App\Http\Controllers\API\Productos\GuardarNuevoProductoController;
+use App\Http\Controllers\API\Reportes\ConsultarCombosDiaController;
 use App\Http\Controllers\API\Reportes\DetallePagosXSucursalController;
 use App\Http\Controllers\API\Reportes\DetalleProductosTicketXSucursalController;
 use App\Http\Controllers\API\Reportes\TopProductosGlobalController;
@@ -251,6 +252,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('detalle_pagos_ticket', [DetallePagosXSucursalController::class, 'Consultar']);
         Route::post('ventas/xhora', [VentasXHoraXSucursalController::class, 'Consultar']);
         Route::post('ventas/diarias', [VentaDiariaController::class, 'Consultar']);
+        Route::post('ventas/combos', [ConsultarCombosDiaController::class, 'Consultar']);
         Route::post('ventas/xproducto', [VentaDiariaProductoSucursalController::class, 'Consultar']);
         Route::post('ventas/rango_producto', [VentasRangoProductosController::class, 'Consultar']);
         Route::post('ventas/top_x_sucursal', [TopProductosXSucursalController::class, 'Consultar']);
