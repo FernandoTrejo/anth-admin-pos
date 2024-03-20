@@ -21,6 +21,7 @@ class TransaccionProductoParser{
         $transaccionProducto->codigo_corte_x = Prop::find('codigo_corte_x', $arr, '');
         $transaccionProducto->iva = Prop::find('iva', $arr, 0);
         $transaccionProducto->motivo_descuento = Prop::find('motivo_descuento', $arr, '');
+        $transaccionProducto->codigo_encargo = Prop::find('codigo_encargo', $arr, null);
         return $transaccionProducto;
     }
 

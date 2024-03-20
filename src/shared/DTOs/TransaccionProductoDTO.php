@@ -17,6 +17,7 @@ class TransaccionProductoDTO
     public $codigo_corte_x;
     public $iva;
     public $motivo_descuento;
+    public $codigo_encargo;
 
 
     public function toArray()
@@ -34,7 +35,8 @@ class TransaccionProductoDTO
             'precio_sin_descuento' => $this->precio_sin_descuento,
             'codigo_corte_x' => $this->codigo_corte_x,
             'iva' => $this->iva,
-            'motivo_descuento' => $this->motivo_descuento
+            'motivo_descuento' => $this->motivo_descuento,
+            'codigo_encargo' => $this->codigo_encargo,
         ];
     }
 }
